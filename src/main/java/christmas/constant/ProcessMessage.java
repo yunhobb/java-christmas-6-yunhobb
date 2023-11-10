@@ -11,6 +11,6 @@ public enum ProcessMessage {
     }
 
     public String toMessage() {
-        return message;
+        return this.message;
     }
 }
