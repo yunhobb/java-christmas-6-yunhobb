@@ -1,6 +1,6 @@
 package christmas.io;
 
-import christmas.domain.ExpectedDate;
+import christmas.domain.ReservationDate;
 
 public class InputManager {
 
@@ -12,8 +12,8 @@ public class InputManager {
         this.inputMapper = new InputMapper();
     }
 
-    public ExpectedDate readExpectedDate() {
-        final String input = inputView.readExpectedDate();
-        return inputMapper.toExpectedDate(input);
+    public ReservationDate readReservationDate() {
+        final String input = inputView.readReservationDate();
+        return inputMapper.toReservationDate(input);
     }
 }

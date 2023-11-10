@@ -8,7 +8,7 @@ public class OutputView {
         System.out.println(ProcessMessage.GAME_START.toMessage());
     }
 
-    public void printExpectedDateRequest() {
-        System.out.println(ProcessMessage.EXPECTED_DATE_REQUEST.toMessage());
+    public void printReservationDateRequest() {
+        System.out.println(ProcessMessage.RESERVATION_DATE_REQUEST.toMessage());
     }
 }

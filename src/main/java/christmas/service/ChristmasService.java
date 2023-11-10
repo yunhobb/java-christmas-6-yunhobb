@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.domain.ExpectedDate;
+import christmas.domain.ReservationDate;
 import christmas.repository.DomainRepository;
 
 public class ChristmasService {
@@ -11,7 +11,7 @@ public class ChristmasService {
         this.domainRepository = new DomainRepository();
     }
 
-    public void saveExpectedDate(final ExpectedDate expectedDate) {
-        domainRepository.saveExpectedDate(expectedDate);
+    public void saveReservationDate(final ReservationDate reservationDate) {
+        domainRepository.saveReservationDate(reservationDate);
     }
 }

@@ -1,10 +1,10 @@
 package christmas.domain;
 
-public class ExpectedDate {
+public class ReservationDate {
 
     private final Number value;
 
-    public ExpectedDate(final Integer value) {
+    public ReservationDate(final Integer value) {
         this.value = new Number(value);
     }
 }

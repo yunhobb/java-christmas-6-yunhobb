@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.ExpectedDate;
+import christmas.domain.ReservationDate;
 import christmas.io.InputManager;
 import christmas.io.OutputView;
 import christmas.service.ChristmasService;
@@ -19,9 +19,9 @@ public class ChristmasController {
 
     public void run() {
         outputView.printGameStartMessage();
-        outputView.printExpectedDateRequest();
-        final ExpectedDate expectedDate = inputManager.readExpectedDate();
-        christmasService.saveExpectedDate(expectedDate);
+        outputView.printReservationDateRequest();
+        final ReservationDate reservationDate = inputManager.readReservationDate();
+        christmasService.saveReservationDate(reservationDate);
 
     }
 }

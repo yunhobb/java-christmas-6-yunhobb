@@ -1,16 +1,16 @@
 package christmas.repository;
 
 import christmas.constant.ExceptionMessage;
-import christmas.domain.ExpectedDate;
+import christmas.domain.ReservationDate;
 import java.util.Optional;
 import java.util.function.Supplier;
 
 public class DomainRepository {
 
-    private ExpectedDate expectedDate;
+    private ReservationDate reservationDate;
 
-    public void saveExpectedDate(final ExpectedDate expectedDate) {
-        this.expectedDate = expectedDate;
+    public void saveReservationDate(final ReservationDate reservationDate) {
+        this.reservationDate = reservationDate;
     }
 
     private <T> T get(final Supplier<T> supplier) {

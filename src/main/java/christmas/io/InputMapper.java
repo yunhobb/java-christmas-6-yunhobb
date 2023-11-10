@@ -1,11 +1,11 @@
 package christmas.io;
 
-import christmas.domain.ExpectedDate;
+import christmas.domain.ReservationDate;
 
 public class InputMapper {
 
-    public ExpectedDate toExpectedDate(final String input) {
+    public ReservationDate toReservationDate(final String input) {
         final Integer number = Integer.parseInt(input);
-        return new ExpectedDate(number);
+        return new ReservationDate(number);
     }
 }

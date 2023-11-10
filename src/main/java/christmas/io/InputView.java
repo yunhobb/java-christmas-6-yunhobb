@@ -10,7 +10,7 @@ public class InputView {
         this.inputValidator = new InputValidator();
     }
 
-    public String readExpectedDate() {
+    public String readReservationDate() {
         final String input = Console.readLine();
         inputValidator.validateNumeric(input);
         return input;
