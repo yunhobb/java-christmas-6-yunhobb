@@ -15,4 +15,8 @@ public class InputView {
         inputValidator.validateNumeric(input);
         return input;
     }
+
+    public String readOrderMenu() {
+        return Console.readLine();
+    }
 }
