@@ -12,5 +12,6 @@ public class ChristmasController {
 
     public void run() {
         outputView.printGameStartMessage();
+        outputView.printExpectedDateRequest();
     }
 }
