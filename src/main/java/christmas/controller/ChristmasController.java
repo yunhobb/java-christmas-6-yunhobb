@@ -22,6 +22,7 @@ public class ChristmasController {
         outputView.printReservationDateRequest();
         final ReservationDate reservationDate = inputManager.readReservationDate();
         christmasService.saveReservationDate(reservationDate);
+        outputView.printMenuWithCountRequest();
 
     }
 }

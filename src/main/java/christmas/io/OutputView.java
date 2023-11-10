@@ -11,4 +11,8 @@ public class OutputView {
     public void printReservationDateRequest() {
         System.out.println(ProcessMessage.RESERVATION_DATE_REQUEST.toMessage());
     }
+
+    public void printMenuWithCountRequest() {
+        System.out.println(ProcessMessage.MENU_WITH_COUNT_REQUEST.toMessage());
+    }
 }
