@@ -28,9 +28,14 @@ public class ChristmasService {
         domainRepository.saveOrderManager(orderManager);
     }
 
-    public void calculate() {
+    public void calculateOrderPrice() {
         final OrderManager orderManager = domainRepository.getOrderManager();
-        final TotalOrderPrice totalOrderPrice = orderManager.getTotalPriceBeforeDiscount();
-        domainRepository.saveTotalPriceBeforeDiscount(totalOrderPrice);
+        final TotalOrderPrice totalOrderPrice = orderManager.getTotalOrderPrice();
+        domainRepository.saveTotalOrderPrice(totalOrderPrice);
+    }
+
+    private void calculateTotalDiscount() {
+        final OrderManager orderManager = domainRepository.getOrderManager();
+
     }
 }

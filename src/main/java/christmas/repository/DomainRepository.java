@@ -35,7 +35,7 @@ public class DomainRepository {
         return get(() -> this.orderManager);
     }
 
-    public void saveTotalPriceBeforeDiscount(final TotalOrderPrice totalOrderPrice) {
+    public void saveTotalOrderPrice(final TotalOrderPrice totalOrderPrice) {
         this.totalOrderPrice = totalOrderPrice;
     }
 

@@ -4,7 +4,8 @@ public enum MenuConstant {
     APPETIZER("appetizer"),
     MAIN("main"),
     DESSERT("dessert"),
-    DRINK("drink");
+    DRINK("drink"),
+    NONE("none");
 
     private final String course;
 

@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.constant.ExceptionMessage;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -26,7 +27,12 @@ public class ReservationDate {
     }
 
     public Integer calculateAddDay() {
-       long addDay = EVENT_START_DAY.until(localDate, ChronoUnit.DAYS);
-       return Integer.parseInt(Long.toString(addDay));
+        long addDay = EVENT_START_DAY.until(localDate, ChronoUnit.DAYS);
+        return Integer.parseInt(Long.toString(addDay));
+    }
+
+    public boolean isHoliday() {
+        DayOfWeek weekend = localDate.getDayOfWeek();
+        return weekend == DayOfWeek.FRIDAY || weekend == DayOfWeek.SATURDAY;
     }
 }
