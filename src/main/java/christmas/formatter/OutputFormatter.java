@@ -1,15 +1,16 @@
 package christmas.formatter;
 
+import christmas.constant.OutputMessage;
 import christmas.constant.ProcessMessage;
 import christmas.domain.OrderMenu;
+import christmas.domain.TotalDiscount;
 import christmas.domain.TotalOrderPrice;
 import java.util.Map;
 
 public class OutputFormatter {
 
     private static final String NEW_LINE = "\n";
-    private static final String CHAMPAGNE_SERVICE = "샴페인 1개";
-    private static final String DO_NOT_EXIST = "없음";
+    private static final int NO_DISCOUNT = 0;
 
     public String formatOrderMenu(final OrderMenu orderMenu) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -29,8 +30,32 @@ public class OutputFormatter {
 
     public String formatServiceMenu(final TotalOrderPrice totalOrderPrice) {
         if (totalOrderPrice.checkServiceEvent()) {
-            return CHAMPAGNE_SERVICE;
+            return OutputMessage.CHAMPAGNE_SERVICE.toMessage();
         }
-        return DO_NOT_EXIST;
+        return OutputMessage.DO_NOT_EXIST.toMessage();
+    }
+
+    public String formatBenefits(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (totalDiscount.isNotDayDiscount()) {
+            stringBuilder.append(String.format(
+                            OutputMessage.CHRISTMAS_D_DAY_DISCOUNT.toMessage(), totalDiscount.toDayDiscount()))
+                    .append(NEW_LINE);
+        }
+        if (totalDiscount.isNotWeekendDiscount()) {
+            stringBuilder.append(
+                            String.format(OutputMessage.WEEKDAY_DISCOUNT.toMessage(), totalDiscount.toWeekendDiscount()))
+                    .append(NEW_LINE);
+        }
+        if (totalDiscount.isNotSpecialDiscount()) {
+            stringBuilder.append(OutputMessage.SPECIAL_DISCOUNT.toMessage()).append(NEW_LINE);
+        }
+        if (totalOrderPrice.checkServiceEvent()) {
+            stringBuilder.append(OutputMessage.SERVICE_EVENT.toMessage()).append(NEW_LINE);
+        }
+        if (stringBuilder.length() == NO_DISCOUNT) {
+            stringBuilder.append(OutputMessage.NO_DISCOUNT.toMessage());
+        }
+        return stringBuilder.toString();
     }
 }

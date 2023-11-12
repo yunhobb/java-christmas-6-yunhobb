@@ -1,12 +1,13 @@
 package christmas.domain;
 
 import christmas.constant.SpecialDay;
+import java.util.Objects;
 
 public class TotalDiscount {
 
     private static final Integer STANDARD_DAY_DISCOUNT = 1000;
     private static final Integer DISCOUNT_PER_DAY = 100;
-    private static final Integer DAY_DISCOUNT_DUE_DAY = 25;
+    private static final Integer DAY_DISCOUNT_DUE_DAY = 23;
     private static final Integer NONE_DISCOUNT = 0;
     private static final Integer WEEKEND_DISCOUNT = 2023;
     private static final Integer SPECIAL_DISCOUNT = 1000;
@@ -39,5 +40,28 @@ public class TotalDiscount {
             return SPECIAL_DISCOUNT;
         }
         return NONE_DISCOUNT;
+    }
+    public boolean isNotDayDiscount() {
+        return !Objects.equals(this.dayDiscount, NONE_DISCOUNT);
+    }
+
+    public Integer toDayDiscount() {
+        return dayDiscount;
+    }
+
+    public boolean isNotWeekendDiscount() {
+        return !Objects.equals(this.weekendDiscount, NONE_DISCOUNT);
+    }
+
+    public Integer toWeekendDiscount() {
+        return weekendDiscount;
+    }
+
+    public boolean isNotSpecialDiscount() {
+        return !Objects.equals(this.specialDiscount, NONE_DISCOUNT);
+    }
+
+    public Integer toSpecialDiscount() {
+        return specialDiscount;
     }
 }

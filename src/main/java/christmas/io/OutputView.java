@@ -2,6 +2,7 @@ package christmas.io;
 
 import christmas.constant.ProcessMessage;
 import christmas.domain.OrderMenu;
+import christmas.domain.TotalDiscount;
 import christmas.domain.TotalOrderPrice;
 import christmas.formatter.OutputFormatter;
 
@@ -38,5 +39,10 @@ public class OutputView {
     public void printServiceMenu(final TotalOrderPrice totalOrderPrice) {
         System.out.println(ProcessMessage.SERVICE_STATISTICS.toMessage());
         System.out.println(outputFormatter.formatServiceMenu(totalOrderPrice));
+    }
+
+    public void printBenefits(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
+        System.out.println(ProcessMessage.BENEFITS_STATISTICS.toMessage());
+        System.out.println(outputFormatter.formatBenefits(totalDiscount, totalOrderPrice));
     }
 }
