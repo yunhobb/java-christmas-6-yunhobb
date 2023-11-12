@@ -68,4 +68,8 @@ public class TotalDiscount {
         }
         return this.dayDiscount + this.weekendDiscount + this.specialDiscount;
     }
+
+    public Integer getTotalDiscount() {
+        return this.dayDiscount + this.weekendDiscount + this.specialDiscount;
+    }
 }

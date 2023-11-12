@@ -8,7 +8,8 @@ public enum OutputMessage {
     SERVICE_EVENT("증정 이벤트: -25,000원"),
     NO_DISCOUNT("0원"),
     DO_NOT_EXIST("없음"),
-    TOTAL_DISCOUNT_TEMPLATE("-%,d원");
+    TOTAL_DISCOUNT_TEMPLATE("-%,d원"),
+    TOTAL_PRICE_TEMPLATE("%,d원");
 
     private final String message;
 

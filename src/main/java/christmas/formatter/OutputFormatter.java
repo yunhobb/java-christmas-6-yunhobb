@@ -66,4 +66,9 @@ public class OutputFormatter {
         }
         return String.format(OutputMessage.TOTAL_DISCOUNT_TEMPLATE.toMessage(), totalDiscountPrice);
     }
+
+    public String formatTotalPrice(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
+        return String.format(OutputMessage.TOTAL_PRICE_TEMPLATE.toMessage(),
+                totalOrderPrice.getTotalPrice(totalDiscount));
+    }
 }

@@ -16,4 +16,8 @@ public class TotalOrderPrice {
     public Integer toPrice() {
         return this.price;
     }
+
+    public Integer getTotalPrice(final TotalDiscount totalDiscount) {
+        return this.price - totalDiscount.getTotalDiscount();
+    }
 }
