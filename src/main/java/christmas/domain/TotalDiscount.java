@@ -11,6 +11,7 @@ public class TotalDiscount {
     private static final Integer NONE_DISCOUNT = 0;
     private static final Integer WEEKEND_DISCOUNT = 2023;
     private static final Integer SPECIAL_DISCOUNT = 1000;
+    private static final Integer SERVICES_DISCOUNT = 25000;
     private final Integer dayDiscount;
     private final Integer weekendDiscount;
     private final Integer specialDiscount;
@@ -61,7 +62,10 @@ public class TotalDiscount {
         return !Objects.equals(this.specialDiscount, NONE_DISCOUNT);
     }
 
-    public Integer toSpecialDiscount() {
-        return specialDiscount;
+    public Integer getTotalDiscount(final TotalOrderPrice totalOrderPrice) {
+        if (totalOrderPrice.checkServiceEvent()) {
+            return this.dayDiscount + this.weekendDiscount + this.specialDiscount + SERVICES_DISCOUNT;
+        }
+        return this.dayDiscount + this.weekendDiscount + this.specialDiscount;
     }
 }

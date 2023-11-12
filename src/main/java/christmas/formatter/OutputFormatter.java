@@ -58,4 +58,12 @@ public class OutputFormatter {
         }
         return stringBuilder.toString();
     }
+
+    public String formatTotalDiscount(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
+        Integer totalDiscountPrice = totalDiscount.getTotalDiscount(totalOrderPrice);
+        if (totalDiscountPrice == NO_DISCOUNT) {
+            return OutputMessage.NO_DISCOUNT.toMessage();
+        }
+        return String.format(OutputMessage.TOTAL_DISCOUNT_TEMPLATE.toMessage(), totalDiscountPrice);
+    }
 }

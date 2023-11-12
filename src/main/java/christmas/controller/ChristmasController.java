@@ -35,5 +35,6 @@ public class ChristmasController {
         outputView.printTotalOrderPrice(orderManager.getTotalOrderPrice());
         outputView.printServiceMenu(orderManager.getTotalOrderPrice());
         outputView.printBenefits(totalDiscount, orderManager.getTotalOrderPrice());
+        outputView.printTotalDiscount(totalDiscount, orderManager.getTotalOrderPrice());
     }
 }

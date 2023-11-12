@@ -45,4 +45,9 @@ public class OutputView {
         System.out.println(ProcessMessage.BENEFITS_STATISTICS.toMessage());
         System.out.println(outputFormatter.formatBenefits(totalDiscount, totalOrderPrice));
     }
+
+    public void printTotalDiscount(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
+        System.out.println(ProcessMessage.TOTAL_DISCOUNT_STATISTICS.toMessage());
+        System.out.println(outputFormatter.formatTotalDiscount(totalDiscount, totalOrderPrice));
+    }
 }
