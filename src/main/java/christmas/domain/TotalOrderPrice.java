@@ -12,4 +12,8 @@ public class TotalOrderPrice {
     public boolean checkChampainEvent() {
         return price >= CHAMPAGNE_SERVICE;
     }
+
+    public Integer toPrice() {
+        return this.price;
+    }
 }

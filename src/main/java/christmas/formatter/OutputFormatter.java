@@ -2,6 +2,7 @@ package christmas.formatter;
 
 import christmas.constant.ProcessMessage;
 import christmas.domain.OrderMenu;
+import christmas.domain.TotalOrderPrice;
 import java.util.Map;
 
 public class OutputFormatter {
@@ -18,5 +19,9 @@ public class OutputFormatter {
             stringBuilder.append(output).append(NEW_LINE);
         }
         return stringBuilder.toString();
+    }
+
+    public String formatTotalOrderPrice(final TotalOrderPrice totalOrderPrice) {
+        return String.format(ProcessMessage.TOTAL_ORDER_PRICE_TEMPLATE.toMessage(), totalOrderPrice.toPrice());
     }
 }

@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.OrderManager;
 import christmas.domain.OrderMenu;
 import christmas.domain.ReservationDate;
 import christmas.io.InputManager;
@@ -26,9 +27,10 @@ public class ChristmasController {
         outputView.printMenuWithCountRequest();
         final OrderMenu orderMenu = inputManager.readOrderMenu();
         christmasService.saveOrderMenu(orderMenu);
-        christmasService.managing();
+        final OrderManager orderManager = christmasService.managing();
         christmasService.calculateOrderPrice();
         christmasService.calculateTotalDiscount();
         outputView.printOrderMenu(orderMenu);
+        outputView.printTotalOrderPrice(orderManager.getTotalOrderPrice());
     }
 }

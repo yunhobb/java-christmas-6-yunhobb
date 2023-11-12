@@ -23,10 +23,11 @@ public class ChristmasService {
         domainRepository.saveOrderMenu(orderMenu);
     }
 
-    public void managing() {
+    public OrderManager managing() {
         final OrderMenu orderMenu = domainRepository.getOrderMenu();
         final OrderManager orderManager = new OrderManager(orderMenu);
         domainRepository.saveOrderManager(orderManager);
+        return orderManager;
     }
 
     public void calculateOrderPrice() {
