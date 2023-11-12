@@ -11,18 +11,18 @@ public class OrderManager {
     private final EnumMap<ChristmasMenu, Integer> elements = new EnumMap<>(ChristmasMenu.class);
 
     public OrderManager(final OrderMenu orderMenu) {
-        initElements();
         Map<String, Integer> menuWithCount = orderMenu.getMenuWithCount();
         for (ChristmasMenu value : ChristmasMenu.values()) {
-            this.elements.put(value, menuWithCount.get(value));
+            this.elements.put(value, menuWithCount.getOrDefault(value.getMenuName(), DEFAULT_COUNT));
         }
     }
 
-    private void initElements() {
-        for (ChristmasMenu value : ChristmasMenu.values()) {
-            elements.put(value, DEFAULT_COUNT);
+    public TotalPriceBeforeDiscount getTotalPriceBeforeDiscount() {
+        Integer totalPrice = 0;
+        for (ChristmasMenu christmasMenu : elements.keySet()) {
+            Integer menuPrice = christmasMenu.getPrice();
+            totalPrice = totalPrice + menuPrice * elements.get(christmasMenu);
         }
+        return new TotalPriceBeforeDiscount(totalPrice);
     }
-
-
 }

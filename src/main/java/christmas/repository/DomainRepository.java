@@ -4,6 +4,7 @@ import christmas.constant.ExceptionMessage;
 import christmas.domain.OrderManager;
 import christmas.domain.OrderMenu;
 import christmas.domain.ReservationDate;
+import christmas.domain.TotalPriceBeforeDiscount;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -12,6 +13,7 @@ public class DomainRepository {
     private ReservationDate reservationDate;
     private OrderMenu orderMenu;
     private OrderManager orderManager;
+    private TotalPriceBeforeDiscount totalPriceBeforeDiscount;
 
     public void saveReservationDate(final ReservationDate reservationDate) {
         this.reservationDate = reservationDate;
@@ -27,6 +29,14 @@ public class DomainRepository {
 
     public void saveOrderManager(final OrderManager orderManager) {
         this.orderManager = orderManager;
+    }
+
+    public OrderManager getOrderManager() {
+        return get(() -> this.orderManager);
+    }
+
+    public void saveTotalPriceBeforeDiscount(final TotalPriceBeforeDiscount totalPriceBeforeDiscount) {
+        this.totalPriceBeforeDiscount = totalPriceBeforeDiscount;
     }
 
     private <T> T get(final Supplier<T> supplier) {

@@ -11,4 +11,8 @@ public class Number {
     public Number(final Number number) {
         this.value = number.value;
     }
+
+    public Integer getValue() {
+        return value;
+    }
 }

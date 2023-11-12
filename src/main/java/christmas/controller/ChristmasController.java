@@ -27,5 +27,6 @@ public class ChristmasController {
         final OrderMenu orderMenu = inputManager.readOrderMenu();
         christmasService.saveOrderMenu(orderMenu);
         christmasService.managing();
+        christmasService.calculate();
     }
 }

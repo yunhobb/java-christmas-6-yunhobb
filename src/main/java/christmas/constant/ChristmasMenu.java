@@ -1,7 +1,6 @@
 package christmas.constant;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public enum ChristmasMenu {
     //Appetizer
@@ -35,16 +34,16 @@ public enum ChristmasMenu {
         this.price = price;
         this.course = course;
     }
-
-    public static ChristmasMenu matchMenu(final String menuName) {
-        return Arrays.stream(ChristmasMenu.values())
-                .filter(v -> Objects.equals(menuName, v.menuName))
-                .findFirst()
-                .orElse(NONE);
-    }
-
+    
     public static boolean isNotIncludeMenu(final String menuName) {
         return Arrays.stream(values())
-                .anyMatch(menu -> menu.menuName.equals(menuName));
+                .noneMatch(menu -> menu.menuName.equals(menuName));
+    }
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public Integer getPrice() {
+        return price;
     }
 }
