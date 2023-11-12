@@ -8,6 +8,8 @@ import java.util.Map;
 public class OutputFormatter {
 
     private static final String NEW_LINE = "\n";
+    private static final String CHAMPAGNE_SERVICE = "샴페인 1개";
+    private static final String DO_NOT_EXIST = "없음";
 
     public String formatOrderMenu(final OrderMenu orderMenu) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -23,5 +25,12 @@ public class OutputFormatter {
 
     public String formatTotalOrderPrice(final TotalOrderPrice totalOrderPrice) {
         return String.format(ProcessMessage.TOTAL_ORDER_PRICE_TEMPLATE.toMessage(), totalOrderPrice.toPrice());
+    }
+
+    public String formatServiceMenu(final TotalOrderPrice totalOrderPrice) {
+        if (totalOrderPrice.checkServiceEvent()) {
+            return CHAMPAGNE_SERVICE;
+        }
+        return DO_NOT_EXIST;
     }
 }

@@ -7,7 +7,9 @@ public enum ProcessMessage {
     ORDER_STATISTICS("\n<주문 메뉴>"),
     ORDER_TEMPLATE("%s %d개"),
     TOTAL_ORDER_PRICE_STATISTICS("\n<할인 전 총주문 금액"),
-    TOTAL_ORDER_PRICE_TEMPLATE("%,d원");
+    TOTAL_ORDER_PRICE_TEMPLATE("%,d원"),
+    SERVICE_STATISTICS("\n<증정 메뉴>");
+
 
     private final String message;
 

@@ -34,4 +34,9 @@ public class OutputView {
         System.out.println(ProcessMessage.TOTAL_ORDER_PRICE_STATISTICS.toMessage());
         System.out.println(outputFormatter.formatTotalOrderPrice(totalOrderPrice));
     }
+
+    public void printServiceMenu(final TotalOrderPrice totalOrderPrice) {
+        System.out.println(ProcessMessage.SERVICE_STATISTICS.toMessage());
+        System.out.println(outputFormatter.formatServiceMenu(totalOrderPrice));
+    }
 }
