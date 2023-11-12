@@ -29,5 +29,6 @@ public class ChristmasController {
         christmasService.managing();
         christmasService.calculateOrderPrice();
         christmasService.calculateTotalDiscount();
+        outputView.printOrderMenu(orderMenu);
     }
 }
