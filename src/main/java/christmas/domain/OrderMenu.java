@@ -13,12 +13,12 @@ public class OrderMenu {
     private static final int MIN_COUNT = 1;
     private final List<String> elements;
 
-    public OrderMenu(List<String> elements) {
+    public OrderMenu(final List<String> elements) {
         validateOrderMenuFormat(elements);
         this.elements = elements;
     }
 
-    private void validateOrderMenuFormat(List<String> elements) {
+    private void validateOrderMenuFormat(final List<String> elements) {
         for (String element : elements) {
             if (RegexPattern.isNotOrderMenuFormat(element)) {
                 throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
@@ -27,25 +27,32 @@ public class OrderMenu {
     }
 
     public Map<String, Integer> getMenuWithCount() {
-        Map<String, Integer> menuWithCount = new HashMap<>();
+        final Map<String, Integer> menuWithCount = new HashMap<>();
 
         for (String element : elements) {
             String[] parts = element.split(MENU_COUNT_DELIMITER);
             validateMenu(parts[0]);
+            validateDuplicateMenu(menuWithCount, parts[0]);
             validateMenuCount(parts[1]);
             menuWithCount.put(parts[0], Integer.parseInt(parts[1]));
         }
         return menuWithCount;
     }
 
-    private void validateMenu(String part) {
-        if (ChristmasMenu.isNotIncludeMenu(part)) {
+    private static void validateDuplicateMenu(final Map<String, Integer> menuWithCount, final String input) {
+        if (menuWithCount.containsKey(input)) {
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_MENU_ORDER.toMessage());
+        }
+    }
+
+    private void validateMenu(final String input) {
+        if (ChristmasMenu.isNotIncludeMenu(input)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU.toMessage());
         }
     }
 
-    private void validateMenuCount(String part) {
-        if (Integer.parseInt(part) < MIN_COUNT) {
+    private void validateMenuCount(final String input) {
+        if (Integer.parseInt(input) < MIN_COUNT) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_COUNT.toMessage());
         }
     }
