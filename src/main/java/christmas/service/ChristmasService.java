@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.OrderManager;
 import christmas.domain.OrderMenu;
 import christmas.domain.ReservationDate;
 import christmas.repository.DomainRepository;
@@ -18,5 +19,11 @@ public class ChristmasService {
 
     public void saveOrderMenu(final OrderMenu orderMenu) {
         domainRepository.saveOrderMenu(orderMenu);
+    }
+
+    public void managing() {
+        final OrderMenu orderMenu = domainRepository.getOrderMenu();
+        final OrderManager orderManager = new OrderManager(orderMenu);
+        domainRepository.saveOrderManager(orderManager);
     }
 }
