@@ -17,12 +17,12 @@ public class OrderManager {
         }
     }
 
-    public TotalPriceBeforeDiscount getTotalPriceBeforeDiscount() {
+    public TotalOrderPrice getTotalPriceBeforeDiscount() {
         Integer totalPrice = 0;
         for (ChristmasMenu christmasMenu : elements.keySet()) {
             Integer menuPrice = christmasMenu.getPrice();
             totalPrice = totalPrice + menuPrice * elements.get(christmasMenu);
         }
-        return new TotalPriceBeforeDiscount(totalPrice);
+        return new TotalOrderPrice(totalPrice);
     }
 }

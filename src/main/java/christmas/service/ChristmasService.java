@@ -3,7 +3,7 @@ package christmas.service;
 import christmas.domain.OrderManager;
 import christmas.domain.OrderMenu;
 import christmas.domain.ReservationDate;
-import christmas.domain.TotalPriceBeforeDiscount;
+import christmas.domain.TotalOrderPrice;
 import christmas.repository.DomainRepository;
 
 public class ChristmasService {
@@ -30,7 +30,7 @@ public class ChristmasService {
 
     public void calculate() {
         final OrderManager orderManager = domainRepository.getOrderManager();
-        final TotalPriceBeforeDiscount totalPriceBeforeDiscount = orderManager.getTotalPriceBeforeDiscount();
-        domainRepository.saveTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
+        final TotalOrderPrice totalOrderPrice = orderManager.getTotalPriceBeforeDiscount();
+        domainRepository.saveTotalPriceBeforeDiscount(totalOrderPrice);
     }
 }
