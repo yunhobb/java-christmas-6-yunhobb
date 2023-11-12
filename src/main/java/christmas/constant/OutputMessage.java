@@ -9,7 +9,9 @@ public enum OutputMessage {
     NO_DISCOUNT("0원"),
     DO_NOT_EXIST("없음"),
     TOTAL_DISCOUNT_TEMPLATE("-%,d원"),
-    TOTAL_PRICE_TEMPLATE("%,d원");
+    TOTAL_PRICE_TEMPLATE("%,d원")
+
+    ;
 
     private final String message;
 

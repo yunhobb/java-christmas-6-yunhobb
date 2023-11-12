@@ -52,7 +52,12 @@ public class OutputView {
     }
 
     public void printTotalPrice(final TotalDiscount totalDiscount,  final TotalOrderPrice totalOrderPrice) {
-        System.out.println(ProcessMessage.TOTAL_PRICE.toMessage());
+        System.out.println(ProcessMessage.TOTAL_PRICE_STATISTICS.toMessage());
         System.out.println(outputFormatter.formatTotalPrice(totalDiscount, totalOrderPrice));
+    }
+
+    public void printBadge(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
+        System.out.println(ProcessMessage.BADGE_STATISTICS.toMessage());
+        System.out.println(outputFormatter.formatBadge(totalDiscount, totalOrderPrice));
     }
 }

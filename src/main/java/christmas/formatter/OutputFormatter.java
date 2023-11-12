@@ -1,5 +1,6 @@
 package christmas.formatter;
 
+import christmas.constant.Badge;
 import christmas.constant.OutputMessage;
 import christmas.constant.ProcessMessage;
 import christmas.domain.OrderMenu;
@@ -70,5 +71,9 @@ public class OutputFormatter {
     public String formatTotalPrice(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
         return String.format(OutputMessage.TOTAL_PRICE_TEMPLATE.toMessage(),
                 totalOrderPrice.getTotalPrice(totalDiscount));
+    }
+
+    public String formatBadge(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
+        return Badge.getBadge(totalDiscount.getTotalDiscount(totalOrderPrice)).toName();
     }
 }

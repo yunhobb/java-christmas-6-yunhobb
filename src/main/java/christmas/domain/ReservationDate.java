@@ -37,9 +37,6 @@ public class ReservationDate {
     }
 
     public Integer getDay() {
-        System.out.println("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
-        System.out.println(localDate.getDayOfMonth());
-        System.out.println("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
         return localDate.getDayOfMonth();
     }
 }
