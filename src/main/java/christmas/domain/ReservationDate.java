@@ -35,4 +35,8 @@ public class ReservationDate {
         DayOfWeek weekend = localDate.getDayOfWeek();
         return weekend == DayOfWeek.FRIDAY || weekend == DayOfWeek.SATURDAY;
     }
+
+    public Integer getDay() {
+        return localDate.getDayOfMonth();
+    }
 }

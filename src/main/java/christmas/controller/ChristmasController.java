@@ -28,5 +28,6 @@ public class ChristmasController {
         christmasService.saveOrderMenu(orderMenu);
         christmasService.managing();
         christmasService.calculateOrderPrice();
+        christmasService.calculateTotalDiscount();
     }
 }

@@ -3,6 +3,7 @@ package christmas.service;
 import christmas.domain.OrderManager;
 import christmas.domain.OrderMenu;
 import christmas.domain.ReservationDate;
+import christmas.domain.TotalDiscount;
 import christmas.domain.TotalOrderPrice;
 import christmas.repository.DomainRepository;
 
@@ -34,8 +35,11 @@ public class ChristmasService {
         domainRepository.saveTotalOrderPrice(totalOrderPrice);
     }
 
-    private void calculateTotalDiscount() {
+    public void calculateTotalDiscount() {
+        final ReservationDate reservationDate = domainRepository.getReservationDate();
         final OrderManager orderManager = domainRepository.getOrderManager();
+        final TotalDiscount totalDiscount = new TotalDiscount(reservationDate, orderManager);
+        domainRepository.saveTotalDiscount(totalDiscount);
 
     }
 }
