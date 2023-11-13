@@ -27,6 +27,7 @@ public class ChristmasController {
         christmasService.saveReservationDate(reservationDate);
         outputView.printMenuWithCountRequest();
         final OrderMenu orderMenu = inputManager.readOrderMenu();
+        outputView.printOutputStart();
         christmasService.saveOrderMenu(orderMenu);
         final OrderManager orderManager = christmasService.managing();
         christmasService.calculateOrderPrice();

@@ -55,7 +55,7 @@ public class OutputFormatter {
             stringBuilder.append(OutputMessage.SERVICE_EVENT.toMessage()).append(NEW_LINE);
         }
         if (stringBuilder.length() == NO_DISCOUNT) {
-            stringBuilder.append(OutputMessage.NO_DISCOUNT.toMessage());
+            stringBuilder.append(OutputMessage.NO_DISCOUNT.toMessage()).append(NEW_LINE);
         }
         return stringBuilder.toString();
     }

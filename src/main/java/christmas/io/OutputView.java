@@ -26,6 +26,10 @@ public class OutputView {
         System.out.println(ProcessMessage.MENU_WITH_COUNT_REQUEST.toMessage());
     }
 
+    public void printOutputStart() {
+        System.out.println(ProcessMessage.OUTPUT_STATISTICS.toMessage());
+    }
+
     public void printOrderMenu(final OrderMenu orderMenu) {
         System.out.println(ProcessMessage.ORDER_STATISTICS.toMessage());
         System.out.println(outputFormatter.formatOrderMenu(orderMenu));
