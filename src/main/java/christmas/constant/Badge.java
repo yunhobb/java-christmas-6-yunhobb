@@ -14,13 +14,13 @@ public enum Badge {
     }
 
     public static Badge getBadge(Integer price) {
-        if (price > 20000) {
+        if (price >= 20_000) {
             return Badge.SANTA;
         }
-        if (price > 10000) {
+        if (price >= 10_000) {
             return Badge.TREE;
         }
-        if (price > 5000) {
+        if (price >= 5_000) {
             return Badge.STAR;
         }
         return Badge.NONE;

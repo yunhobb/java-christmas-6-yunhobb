@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class TotalDiscount {
 
-    private static final Integer STANDARD_DAY_DISCOUNT = 1000;
-    private static final Integer DISCOUNT_PER_DAY = 100;
-    private static final Integer DAY_DISCOUNT_DUE_DAY = 23;
-    private static final Integer NONE_DISCOUNT = 0;
-    private static final Integer WEEKEND_DISCOUNT = 2023;
-    private static final Integer SPECIAL_DISCOUNT = 1000;
-    private static final Integer SERVICES_DISCOUNT = 25000;
-    private static final Integer MIN_ACCEPTABLE_DISCOUNT_AMOUNT = 10000;
+    private static final int STANDARD_DAY_DISCOUNT = 1_000;
+    private static final int DISCOUNT_PER_DAY = 100;
+    private static final int DAY_DISCOUNT_DUE_DAY = 23;
+    private static final int NONE_DISCOUNT = 0;
+    private static final int WEEKEND_DISCOUNT = 2_023;
+    private static final int SPECIAL_DISCOUNT = 1_000;
+    private static final int SERVICES_DISCOUNT = 25_000;
+    private static final int MIN_ACCEPTABLE_DISCOUNT_AMOUNT = 10_000;
     private final Integer dayDiscount;
     private final Integer weekendDiscount;
     private final Integer specialDiscount;

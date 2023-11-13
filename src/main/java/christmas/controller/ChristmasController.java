@@ -16,7 +16,9 @@ public class ChristmasController {
     private final ChristmasService christmasService;
 
     public ChristmasController(
-            final OutputView outputView, final InputManager inputManager, final ChristmasService christmasService) {
+            final OutputView outputView,
+            final InputManager inputManager,
+            final ChristmasService christmasService) {
         this.outputView = outputView;
         this.inputManager = inputManager;
         this.christmasService = christmasService;
@@ -32,7 +34,7 @@ public class ChristmasController {
     }
 
     private OrderMenu readOrderMenu() {
-        return retryUntilSuccess(() -> {
+        return retryUntilSuccessWithReturn(() -> {
             outputView.printMenuWithCountRequest();
             final OrderMenu orderMenu = inputManager.readOrderMenu();
             outputView.printOutputStart();
@@ -43,13 +45,12 @@ public class ChristmasController {
     }
 
     private void readReservationDate() {
-        Supplier<Void> supplier = () -> {
+        Runnable runnable = () -> {
             outputView.printReservationDateRequest();
             final ReservationDate reservationDate = inputManager.readReservationDate();
             christmasService.saveReservationDate(reservationDate);
-            return null;
-        } ;
-        retryUntilSuccess(supplier);
+        };
+        retryUntilSuccessWithOutReturn(runnable);
     }
 
     private void printEventBenefits(
@@ -63,10 +64,20 @@ public class ChristmasController {
         outputView.printBadge(totalDiscount, totalOrderPrice);
     }
 
-    private <T> T retryUntilSuccess(final Supplier<T> supplier) {
+    private <T> T retryUntilSuccessWithReturn(final Supplier<T> supplier) {
         while (true) {
             try {
                 return supplier.get();
+            } catch (IllegalArgumentException e) {
+                outputView.printExceptionMessage(e);
+            }
+        }
+    }
+    private void retryUntilSuccessWithOutReturn(final Runnable runnable) {
+        while (true) {
+            try {
+                runnable.run();
+                return; // 예외 없이 실행되면 종료
             } catch (IllegalArgumentException e) {
                 outputView.printExceptionMessage(e);
             }

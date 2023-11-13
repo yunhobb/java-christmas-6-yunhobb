@@ -10,14 +10,14 @@ public class ReservationDate {
     private static final int START_DATE = 1;
     private static final int END_DATE = 31;
     private static final int EVENT_YEAR = 2023;
-    private static final int EVNET_MONTH = 12;
-    private static final LocalDate EVENT_START_DAY = LocalDate.of(EVENT_YEAR, EVNET_MONTH, START_DATE);
+    private static final int EVENT_MONTH = 12;
+    private static final LocalDate EVENT_START_DAY = LocalDate.of(EVENT_YEAR, EVENT_MONTH, START_DATE);
 
     private final LocalDate localDate;
 
     public ReservationDate(final Integer date) {
         validateDate(date);
-        this.localDate = LocalDate.of(EVENT_YEAR, EVNET_MONTH, date);
+        this.localDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, date);
     }
 
     private void validateDate(final Integer date) {

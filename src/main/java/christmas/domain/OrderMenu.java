@@ -12,6 +12,9 @@ public class OrderMenu {
     private static final String MENU_COUNT_DELIMITER = "-";
     private static final int MIN_COUNT = 1;
     private static final int LIMIT_MENU_COUNT = 20;
+    private static final int MENU_INDEX = 0;
+    private static final int COUNT_INDEX = 1;
+    private static final int NON_COUNT = 0;
     private final List<String> elements;
 
     public OrderMenu(final List<String> elements) {
@@ -31,11 +34,11 @@ public class OrderMenu {
         final Map<String, Integer> menuWithCount = new HashMap<>();
         for (String element : elements) {
             String[] parts = element.split(MENU_COUNT_DELIMITER);
-            validateMenu(parts[0]);
-            validateCountNumeric(parts[1]);
-            validateDuplicateMenu(menuWithCount, parts[0]);
-            validateMenuCount(parts[1]);
-            menuWithCount.put(parts[0], Integer.parseInt(parts[1]));
+            validateMenu(parts[MENU_INDEX]);
+            validateCountNumeric(parts[COUNT_INDEX]);
+            validateDuplicateMenu(menuWithCount, parts[MENU_INDEX]);
+            validateMenuCount(parts[COUNT_INDEX]);
+            menuWithCount.put(parts[MENU_INDEX], Integer.parseInt(parts[COUNT_INDEX]));
         }
         validateOverTwentyCount(menuWithCount);
         validateDrinkMenu(menuWithCount);
@@ -61,7 +64,7 @@ public class OrderMenu {
     }
 
     private void validateOverTwentyCount(final Map<String, Integer> menuWithCount) {
-        int total = 0;
+        int total = NON_COUNT;
         for (int value : menuWithCount.values()) {
             total += value;
         }

@@ -7,7 +7,8 @@ import java.util.Map;
 public class OrderManager {
 
 
-    private static final Integer DEFAULT_COUNT = 0;
+    private static final int DEFAULT_COUNT = 0;
+    private static final int NON_PRICE = 0;
     private final EnumMap<ChristmasMenu, Integer> elements = new EnumMap<>(ChristmasMenu.class);
 
     public OrderManager(final OrderMenu orderMenu) {
@@ -18,7 +19,7 @@ public class OrderManager {
     }
 
     public TotalOrderPrice getTotalOrderPrice() {
-        int totalPrice = 0;
+        int totalPrice = NON_PRICE;
         for (ChristmasMenu christmasMenu : elements.keySet()) {
             Integer menuPrice = christmasMenu.getPrice();
             totalPrice = totalPrice + menuPrice * elements.get(christmasMenu);
@@ -27,7 +28,7 @@ public class OrderManager {
     }
 
     public Integer getDiscountMenuCount(final ReservationDate reservationDate) {
-        int count = 0;
+        int count = DEFAULT_COUNT;
         if (reservationDate.isHoliday()) {
             for (ChristmasMenu christmasMenu : elements.keySet()) {
                 if (ChristmasMenu.isMain(christmasMenu.getMenuName())) {

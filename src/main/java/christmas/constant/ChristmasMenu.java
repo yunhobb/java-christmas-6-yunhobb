@@ -36,7 +36,7 @@ public enum ChristmasMenu {
         this.price = price;
         this.course = course;
     }
-    
+
     public static boolean isNotIncludeMenu(final String menuName) {
         return Arrays.stream(ChristmasMenu.values())
                 .noneMatch(christmasMenu -> christmasMenu.menuName.equals(menuName));
@@ -55,7 +55,7 @@ public enum ChristmasMenu {
                 .allMatch(key -> findByMenuName(key).getCourse() == MenuConstant.DRINK);
     }
 
-    public static ChristmasMenu findByMenuName(final String menuName) {
+    private static ChristmasMenu findByMenuName(final String menuName) {
         return Arrays.stream(ChristmasMenu.values())
                 .filter(v -> Objects.equals(menuName, v.menuName))
                 .findFirst()
@@ -70,7 +70,7 @@ public enum ChristmasMenu {
         return price;
     }
 
-    public MenuConstant getCourse() {
+    private MenuConstant getCourse() {
         return course;
     }
 

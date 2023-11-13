@@ -31,16 +31,12 @@ public class ChristmasService {
 
     public TotalOrderPrice calculateOrderPrice() {
         final OrderManager orderManager = domainRepository.getOrderManager();
-        final TotalOrderPrice totalOrderPrice = orderManager.getTotalOrderPrice();
-        domainRepository.saveTotalOrderPrice(totalOrderPrice);
-        return totalOrderPrice;
+        return orderManager.getTotalOrderPrice();
     }
 
     public TotalDiscount calculateTotalDiscount() {
         final ReservationDate reservationDate = domainRepository.getReservationDate();
         final OrderManager orderManager = domainRepository.getOrderManager();
-        final TotalDiscount totalDiscount = new TotalDiscount(reservationDate, orderManager);
-        domainRepository.saveTotalDiscount(totalDiscount);
-        return totalDiscount;
+        return new TotalDiscount(reservationDate, orderManager);
     }
 }

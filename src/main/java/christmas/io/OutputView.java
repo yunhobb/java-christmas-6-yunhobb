@@ -55,7 +55,7 @@ public class OutputView {
         System.out.println(outputFormatter.formatTotalDiscount(totalDiscount, totalOrderPrice));
     }
 
-    public void printTotalPrice(final TotalDiscount totalDiscount,  final TotalOrderPrice totalOrderPrice) {
+    public void printTotalPrice(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
         System.out.println(ProcessMessage.TOTAL_PRICE_STATISTICS.toMessage());
         System.out.println(outputFormatter.formatTotalPrice(totalDiscount, totalOrderPrice));
     }
