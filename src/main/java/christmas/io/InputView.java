@@ -6,8 +6,8 @@ public class InputView {
 
     private final InputValidator inputValidator;
 
-    public InputView() {
-        this.inputValidator = new InputValidator();
+    public InputView(final InputValidator inputValidator) {
+        this.inputValidator = inputValidator;
     }
 
     public String readReservationDate() {

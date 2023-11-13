@@ -11,8 +11,8 @@ public class ChristmasService {
 
     private final DomainRepository domainRepository;
 
-    public ChristmasService() {
-        this.domainRepository = new DomainRepository();
+    public ChristmasService(final DomainRepository domainRepository) {
+        this.domainRepository = domainRepository;
     }
 
     public void saveReservationDate(final ReservationDate reservationDate) {
@@ -23,17 +23,17 @@ public class ChristmasService {
         domainRepository.saveOrderMenu(orderMenu);
     }
 
-    public OrderManager managing() {
+    public void managing() {
         final OrderMenu orderMenu = domainRepository.getOrderMenu();
         final OrderManager orderManager = new OrderManager(orderMenu);
         domainRepository.saveOrderManager(orderManager);
-        return orderManager;
     }
 
-    public void calculateOrderPrice() {
+    public TotalOrderPrice calculateOrderPrice() {
         final OrderManager orderManager = domainRepository.getOrderManager();
         final TotalOrderPrice totalOrderPrice = orderManager.getTotalOrderPrice();
         domainRepository.saveTotalOrderPrice(totalOrderPrice);
+        return totalOrderPrice;
     }
 
     public TotalDiscount calculateTotalDiscount() {

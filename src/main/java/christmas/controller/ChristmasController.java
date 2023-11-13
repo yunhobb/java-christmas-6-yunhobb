@@ -14,10 +14,11 @@ public class ChristmasController {
     private final InputManager inputManager;
     private final ChristmasService christmasService;
 
-    public ChristmasController() {
-        this.outputView = new OutputView();
-        this.inputManager = new InputManager();
-        this.christmasService = new ChristmasService();
+    public ChristmasController(
+            final OutputView outputView, final InputManager inputManager, final ChristmasService christmasService) {
+        this.outputView = outputView;
+        this.inputManager = inputManager;
+        this.christmasService = christmasService;
     }
 
     public void run() {

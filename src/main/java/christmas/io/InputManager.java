@@ -8,9 +8,9 @@ public class InputManager {
     private final InputView inputView;
     private final InputMapper inputMapper;
 
-    public InputManager() {
-        this.inputView = new InputView();
-        this.inputMapper = new InputMapper();
+    public InputManager(final InputView inputView, final InputMapper inputMapper) {
+        this.inputView = inputView;
+        this.inputMapper = inputMapper;
     }
 
     public ReservationDate readReservationDate() {

@@ -10,8 +10,8 @@ public class OutputView {
 
     private final OutputFormatter outputFormatter;
 
-    public OutputView() {
-        this.outputFormatter = new OutputFormatter();
+    public OutputView(final OutputFormatter outputFormatter) {
+        this.outputFormatter = outputFormatter;
     }
 
     public void printGameStartMessage() {
@@ -63,5 +63,9 @@ public class OutputView {
     public void printBadge(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
         System.out.println(ProcessMessage.BADGE_STATISTICS.toMessage());
         System.out.println(outputFormatter.formatBadge(totalDiscount, totalOrderPrice));
+    }
+
+    public void printExceptionMessage(final IllegalArgumentException e) {
+        System.out.println(e.getMessage());
     }
 }
