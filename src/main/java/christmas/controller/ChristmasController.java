@@ -1,12 +1,13 @@
 package christmas.controller;
 
-import christmas.domain.OrderManager;
 import christmas.domain.OrderMenu;
 import christmas.domain.ReservationDate;
 import christmas.domain.TotalDiscount;
+import christmas.domain.TotalOrderPrice;
 import christmas.io.InputManager;
 import christmas.io.OutputView;
 import christmas.service.ChristmasService;
+import java.util.function.Supplier;
 
 public class ChristmasController {
 
@@ -23,22 +24,52 @@ public class ChristmasController {
 
     public void run() {
         outputView.printGameStartMessage();
-        outputView.printReservationDateRequest();
-        final ReservationDate reservationDate = inputManager.readReservationDate();
-        christmasService.saveReservationDate(reservationDate);
-        outputView.printMenuWithCountRequest();
-        final OrderMenu orderMenu = inputManager.readOrderMenu();
-        outputView.printOutputStart();
-        christmasService.saveOrderMenu(orderMenu);
-        final OrderManager orderManager = christmasService.managing();
-        christmasService.calculateOrderPrice();
-        final TotalDiscount totalDiscount =christmasService.calculateTotalDiscount();
+        readReservationDate();
+        final OrderMenu orderMenu = readOrderMenu();
+        final TotalOrderPrice totalOrderPrice = christmasService.calculateOrderPrice();
+        final TotalDiscount totalDiscount = christmasService.calculateTotalDiscount();
+        printEventBenefits(orderMenu, totalOrderPrice, totalDiscount);
+    }
+
+    private OrderMenu readOrderMenu() {
+        return retryUntilSuccess(() -> {
+            outputView.printMenuWithCountRequest();
+            final OrderMenu orderMenu = inputManager.readOrderMenu();
+            outputView.printOutputStart();
+            christmasService.saveOrderMenu(orderMenu);
+            christmasService.managing();
+            return orderMenu;
+        });
+    }
+
+    private void readReservationDate() {
+        Supplier<Void> supplier = () -> {
+            outputView.printReservationDateRequest();
+            final ReservationDate reservationDate = inputManager.readReservationDate();
+            christmasService.saveReservationDate(reservationDate);
+            return null;
+        } ;
+        retryUntilSuccess(supplier);
+    }
+
+    private void printEventBenefits(
+            final OrderMenu orderMenu, final TotalOrderPrice totalOrderPrice, final TotalDiscount totalDiscount) {
         outputView.printOrderMenu(orderMenu);
-        outputView.printTotalOrderPrice(orderManager.getTotalOrderPrice());
-        outputView.printServiceMenu(orderManager.getTotalOrderPrice());
-        outputView.printBenefits(totalDiscount, orderManager.getTotalOrderPrice());
-        outputView.printTotalDiscount(totalDiscount, orderManager.getTotalOrderPrice());
-        outputView.printTotalPrice(totalDiscount, orderManager.getTotalOrderPrice());
-        outputView.printBadge(totalDiscount, orderManager.getTotalOrderPrice());
+        outputView.printTotalOrderPrice(totalOrderPrice);
+        outputView.printServiceMenu(totalOrderPrice);
+        outputView.printBenefits(totalDiscount, totalOrderPrice);
+        outputView.printTotalDiscount(totalDiscount, totalOrderPrice);
+        outputView.printTotalPrice(totalDiscount, totalOrderPrice);
+        outputView.printBadge(totalDiscount, totalOrderPrice);
+    }
+
+    private <T> T retryUntilSuccess(final Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                outputView.printExceptionMessage(e);
+            }
+        }
     }
 }

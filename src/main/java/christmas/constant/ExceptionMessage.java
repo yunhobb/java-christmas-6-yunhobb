@@ -2,9 +2,9 @@ package christmas.constant;
 
 public enum ExceptionMessage {
     NOT_INITIALIZED("도메인 객체가 초기화되지 않았습니다."),
-    NOT_NUMBER("입력값은 숫자여야 합니다."),
-    INVALID_DATE("날짜는 1 ~ 31 사이의 범위여야 합니다."),
-    INVALID_ORDER_MENU_FORMAT("잘못된 주문 형식입니다."),
+    INVALID_DATE("유효하지 않은 날짜입니다. 다시 입력해 주세요."),
+    INVALID_DATE_RANGE("날짜는 1 ~ 31 사이의 범위여야 합니다."),
+    INVALID_ORDER_MENU_FORMAT("유효하지 않은 주문입니다. 다시 입력해 주세요."),
     INVALID_ORDER_MENU("없는 메뉴입니다."),
     INVALID_ORDER_MIN_COUNT("1개 이상을 주문 하셔야 합니다."),
     DUPLICATE_MENU_ORDER("음식을 중복하여 주문 하셨습니다."),

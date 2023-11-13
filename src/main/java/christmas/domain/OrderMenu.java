@@ -32,6 +32,7 @@ public class OrderMenu {
         for (String element : elements) {
             String[] parts = element.split(MENU_COUNT_DELIMITER);
             validateMenu(parts[0]);
+            validateCountNumeric(parts[1]);
             validateDuplicateMenu(menuWithCount, parts[0]);
             validateMenuCount(parts[1]);
             menuWithCount.put(parts[0], Integer.parseInt(parts[1]));
@@ -75,7 +76,9 @@ public class OrderMenu {
         }
     }
 
-    public List<String> toelements() {
-        return List.copyOf(elements);
+    private void validateCountNumeric(final String input) {
+        if (RegexPattern.isNotNumeric(input)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
+        }
     }
 }

@@ -7,7 +7,7 @@ public class InputValidator {
 
     public void validateNumeric(final String input) {
         if (RegexPattern.isNotNumeric(input)) {
-            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMBER.toMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_DATE.toMessage());
         }
     }
 }
