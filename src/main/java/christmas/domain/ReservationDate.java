@@ -22,7 +22,7 @@ public class ReservationDate {
 
     private void validateDate(final Integer date) {
         if (date < START_DATE || date > END_DATE) {
-            throw new IllegalArgumentException(ExceptionMessage.NOT_INITIALIZED.toMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_DATE.toMessage());
         }
     }
 

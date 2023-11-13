@@ -12,12 +12,19 @@ public class TotalDiscount {
     private static final Integer WEEKEND_DISCOUNT = 2023;
     private static final Integer SPECIAL_DISCOUNT = 1000;
     private static final Integer SERVICES_DISCOUNT = 25000;
+    private static final Integer MIN_ACCEPTABLE_DISCOUNT_AMOUNT = 10000;
     private final Integer dayDiscount;
     private final Integer weekendDiscount;
     private final Integer specialDiscount;
 
 
     public TotalDiscount(final ReservationDate reservationDate, final OrderManager orderManager) {
+        if (orderManager.getTotalOrderPrice().toPrice() < MIN_ACCEPTABLE_DISCOUNT_AMOUNT) {
+            this.dayDiscount = NONE_DISCOUNT;
+            this.weekendDiscount = NONE_DISCOUNT;
+            this.specialDiscount = NONE_DISCOUNT;
+            return;
+        }
         this.dayDiscount = calculateDayDiscount(reservationDate);
         this.weekendDiscount = calculateWeekendDiscount(reservationDate, orderManager);
         this.specialDiscount = calculateSpecialDiscount(reservationDate);
@@ -42,6 +49,7 @@ public class TotalDiscount {
         }
         return NONE_DISCOUNT;
     }
+
     public boolean isNotDayDiscount() {
         return !Objects.equals(this.dayDiscount, NONE_DISCOUNT);
     }
