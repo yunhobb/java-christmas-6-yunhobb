@@ -6,7 +6,7 @@ import christmas.constant.ProcessMessage;
 import christmas.domain.OrderMenu;
 import christmas.domain.TotalDiscount;
 import christmas.domain.TotalOrderPrice;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OutputFormatter {
 
@@ -14,15 +14,10 @@ public class OutputFormatter {
     private static final int NO_DISCOUNT = 0;
 
     public String formatOrderMenu(final OrderMenu orderMenu) {
-        StringBuilder stringBuilder = new StringBuilder();
-        Map<String, Integer> menuWithCount = orderMenu.getMenuWithCount();
-        for (Map.Entry<String, Integer> entry : menuWithCount.entrySet()) {
-            String menu = entry.getKey();
-            Integer count = entry.getValue();
-            String output = String.format(ProcessMessage.ORDER_TEMPLATE.toMessage(), menu, count);
-            stringBuilder.append(output).append(NEW_LINE);
-        }
-        return stringBuilder.toString();
+        return orderMenu.getMenuWithCount().entrySet().stream()
+                .map(entry ->
+                        String.format(ProcessMessage.ORDER_TEMPLATE.toMessage(), entry.getKey(), entry.getValue()))
+                .collect(Collectors.joining(NEW_LINE));
     }
 
     public String formatTotalOrderPrice(final TotalOrderPrice totalOrderPrice) {
@@ -37,27 +32,46 @@ public class OutputFormatter {
     }
 
     public String formatBenefits(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringbuilder = new StringBuilder();
+        appendDayDiscountMessage(stringbuilder, totalDiscount);
+        appendWeekendDiscountMessage(stringbuilder, totalDiscount);
+        appendSpecialDiscountMessage(stringbuilder, totalDiscount);
+        appendServiceEventMessage(stringbuilder, totalOrderPrice);
+        appendNotExistMessage(stringbuilder);
+        return stringbuilder.toString();
+    }
+
+    private void appendDayDiscountMessage(final StringBuilder stringbuilder, final TotalDiscount totalDiscount) {
         if (totalDiscount.isNotDayDiscount()) {
-            stringBuilder.append(String.format(
+            stringbuilder.append(String.format(
                             OutputMessage.CHRISTMAS_D_DAY_DISCOUNT.toMessage(), totalDiscount.toDayDiscount()))
                     .append(NEW_LINE);
         }
+    }
+
+    private void appendWeekendDiscountMessage(final StringBuilder stringbuilder, final TotalDiscount totalDiscount) {
         if (totalDiscount.isNotWeekendDiscount()) {
-            stringBuilder.append(
-                            String.format(OutputMessage.WEEKDAY_DISCOUNT.toMessage(), totalDiscount.toWeekendDiscount()))
-                    .append(NEW_LINE);
+            stringbuilder.append(String.format(
+                    OutputMessage.WEEKDAY_DISCOUNT.toMessage(), totalDiscount.toWeekendDiscount())).append(NEW_LINE);
         }
+    }
+
+    private void appendSpecialDiscountMessage(final StringBuilder stringbuilder, final TotalDiscount totalDiscount) {
         if (totalDiscount.isNotSpecialDiscount()) {
-            stringBuilder.append(OutputMessage.SPECIAL_DISCOUNT.toMessage()).append(NEW_LINE);
+            stringbuilder.append(OutputMessage.SPECIAL_DISCOUNT.toMessage()).append(NEW_LINE);
         }
+    }
+
+    private void appendServiceEventMessage(final StringBuilder stringbuilder, final TotalOrderPrice totalOrderPrice) {
         if (totalOrderPrice.checkServiceEvent()) {
-            stringBuilder.append(OutputMessage.SERVICE_EVENT.toMessage()).append(NEW_LINE);
+            stringbuilder.append(OutputMessage.SERVICE_EVENT.toMessage()).append(NEW_LINE);
         }
-        if (stringBuilder.length() == NO_DISCOUNT) {
-            stringBuilder.append(OutputMessage.DO_NOT_EXIST.toMessage()).append(NEW_LINE);
+    }
+
+    private void appendNotExistMessage(final StringBuilder stringbuilder) {
+        if (stringbuilder.length() == NO_DISCOUNT) {
+            stringbuilder.append(OutputMessage.DO_NOT_EXIST.toMessage()).append(NEW_LINE);
         }
-        return stringBuilder.toString();
     }
 
     public String formatTotalDiscount(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {

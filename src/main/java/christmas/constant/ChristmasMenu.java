@@ -43,11 +43,11 @@ public enum ChristmasMenu {
     }
 
     public static boolean isDessert(final String menuName) {
-        return Objects.equals(findByMenuName(menuName).getCourse(), MenuConstant.DESSERT);
+        return findByMenuName(menuName).getCourse() == MenuConstant.DESSERT;
     }
 
     public static boolean isMain(final String menuName) {
-        return Objects.equals(findByMenuName(menuName).getCourse(), MenuConstant.MAIN);
+        return findByMenuName(menuName).getCourse() == MenuConstant.MAIN;
     }
 
     public static boolean isAllDrink(final Map<String, Integer> menuWithCount) {

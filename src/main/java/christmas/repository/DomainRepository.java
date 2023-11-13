@@ -42,5 +42,4 @@ public class DomainRepository {
                 .orElseThrow(
                         () -> new IllegalStateException(ExceptionMessage.NOT_INITIALIZED.toMessage()));
     }
-
 }

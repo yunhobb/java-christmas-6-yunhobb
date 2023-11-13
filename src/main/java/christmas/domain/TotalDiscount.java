@@ -71,10 +71,11 @@ public class TotalDiscount {
     }
 
     public Integer getTotalDiscount(final TotalOrderPrice totalOrderPrice) {
+        Integer totalDiscount = this.dayDiscount + this.weekendDiscount + this.specialDiscount;
         if (totalOrderPrice.checkServiceEvent()) {
-            return this.dayDiscount + this.weekendDiscount + this.specialDiscount + SERVICES_DISCOUNT;
+            totalDiscount += SERVICES_DISCOUNT;
         }
-        return this.dayDiscount + this.weekendDiscount + this.specialDiscount;
+        return totalDiscount;
     }
 
     public Integer getTotalDiscount() {

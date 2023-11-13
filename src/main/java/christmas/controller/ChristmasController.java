@@ -45,12 +45,11 @@ public class ChristmasController {
     }
 
     private void readReservationDate() {
-        Runnable runnable = () -> {
+        retryUntilSuccessWithOutReturn(() -> {
             outputView.printReservationDateRequest();
             final ReservationDate reservationDate = inputManager.readReservationDate();
             christmasService.saveReservationDate(reservationDate);
-        };
-        retryUntilSuccessWithOutReturn(runnable);
+        });
     }
 
     private void printEventBenefits(
@@ -73,11 +72,12 @@ public class ChristmasController {
             }
         }
     }
+
     private void retryUntilSuccessWithOutReturn(final Runnable runnable) {
         while (true) {
             try {
                 runnable.run();
-                return; // 예외 없이 실행되면 종료
+                return;
             } catch (IllegalArgumentException e) {
                 outputView.printExceptionMessage(e);
             }

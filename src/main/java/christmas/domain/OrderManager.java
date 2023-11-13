@@ -27,13 +27,9 @@ public class OrderManager {
     }
 
     public Integer getDiscountMenuCount(final ReservationDate reservationDate) {
-        Predicate<ChristmasMenu> filter = menu -> true;
-        if (reservationDate.isHoliday()) {
-            filter = menu -> ChristmasMenu.isMain(menu.getMenuName());
-        }
-        if (!reservationDate.isHoliday()) {
-            filter = menu -> ChristmasMenu.isDessert(menu.getMenuName());
-        }
+        Predicate<ChristmasMenu> filter = menu -> reservationDate.isHoliday() ?
+                ChristmasMenu.isMain(menu.getMenuName()) :
+                ChristmasMenu.isDessert(menu.getMenuName());
         return getFilteredMenuCount(filter);
     }
 

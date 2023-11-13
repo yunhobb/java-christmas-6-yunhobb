@@ -27,8 +27,7 @@ public class ReservationDate {
     }
 
     public Integer calculateAddDay() {
-        long addDay = EVENT_START_DAY.until(localDate, ChronoUnit.DAYS);
-        return Integer.parseInt(Long.toString(addDay));
+        return Math.toIntExact(EVENT_START_DAY.until(localDate, ChronoUnit.DAYS));
     }
 
     public boolean isHoliday() {
