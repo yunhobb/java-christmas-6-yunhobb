@@ -14,7 +14,6 @@ public class OrderMenu {
     private static final int LIMIT_MENU_COUNT = 20;
     private static final int MENU_INDEX = 0;
     private static final int COUNT_INDEX = 1;
-    private static final int NON_COUNT = 0;
     private final List<String> elements;
 
     public OrderMenu(final List<String> elements) {
@@ -23,11 +22,12 @@ public class OrderMenu {
     }
 
     private void validateOrderMenuFormat(final List<String> elements) {
-        for (String element : elements) {
-            if (RegexPattern.isNotOrderMenuFormat(element)) {
-                throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
-            }
-        }
+        elements.stream()
+                .filter(RegexPattern::isNotOrderMenuFormat)
+                .findAny()
+                .ifPresent(element -> {
+                    throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
+                });
     }
 
     public Map<String, Integer> getMenuWithCount() {
@@ -64,10 +64,13 @@ public class OrderMenu {
     }
 
     private void validateOverTwentyCount(final Map<String, Integer> menuWithCount) {
-        int total = NON_COUNT;
-        for (int value : menuWithCount.values()) {
-            total += value;
-        }
+        Integer total = menuWithCount.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+        validateMinCount(total);
+    }
+
+    private void validateMinCount(Integer total) {
         if (total > LIMIT_MENU_COUNT) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MAX_COUNT.toMessage());
         }
