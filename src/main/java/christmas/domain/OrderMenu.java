@@ -29,21 +29,27 @@ public class OrderMenu {
 
     public Map<String, Integer> getMenuWithCount() {
         final Map<String, Integer> menuWithCount = new HashMap<>();
-
         for (String element : elements) {
             String[] parts = element.split(MENU_COUNT_DELIMITER);
             validateMenu(parts[0]);
             validateDuplicateMenu(menuWithCount, parts[0]);
-            validateOverTwentyCount(menuWithCount);
             validateMenuCount(parts[1]);
             menuWithCount.put(parts[0], Integer.parseInt(parts[1]));
         }
+        validateOverTwentyCount(menuWithCount);
+        validateDrinkMenu(menuWithCount);
         return menuWithCount;
     }
 
     private void validateMenu(final String input) {
         if (ChristmasMenu.isNotIncludeMenu(input)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU.toMessage());
+        }
+    }
+
+    private void validateDrinkMenu(final Map<String, Integer> menuWithCount) {
+        if (ChristmasMenu.isAllDrink(menuWithCount)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_DRINK_ONLY.toMessage());
         }
     }
 

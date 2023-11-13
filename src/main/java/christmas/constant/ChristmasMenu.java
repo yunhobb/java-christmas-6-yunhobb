@@ -1,6 +1,7 @@
 package christmas.constant;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 
 public enum ChristmasMenu {
@@ -47,6 +48,11 @@ public enum ChristmasMenu {
 
     public static boolean isMain(final String menuName) {
         return Objects.equals(findByMenuName(menuName).getCourse(), MenuConstant.MAIN);
+    }
+
+    public static boolean isAllDrink(final Map<String, Integer> menuWithCount) {
+        return menuWithCount.keySet().stream()
+                .allMatch(key -> findByMenuName(key).getCourse() == MenuConstant.DRINK);
     }
 
     public static ChristmasMenu findByMenuName(final String menuName) {

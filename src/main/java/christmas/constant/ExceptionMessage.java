@@ -8,7 +8,8 @@ public enum ExceptionMessage {
     INVALID_ORDER_MENU("없는 메뉴입니다."),
     INVALID_ORDER_MIN_COUNT("1개 이상을 주문 하셔야 합니다."),
     DUPLICATE_MENU_ORDER("음식을 중복하여 주문 하셨습니다."),
-    INVALID_ORDER_MAX_COUNT("20개가 초과하게 구매할수 없습니다.");
+    INVALID_ORDER_MAX_COUNT("20개가 초과하게 구매할수 없습니다."),
+    INVALID_ORDER_DRINK_ONLY("음료만 주문할 수 없습니다.");
 
 
     private static final String ERROR_TAG = "[ERROR] ";
