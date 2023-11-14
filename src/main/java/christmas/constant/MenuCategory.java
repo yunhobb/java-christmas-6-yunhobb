@@ -12,8 +12,4 @@ public enum MenuCategory {
     MenuCategory(final String course) {
         this.course = course;
     }
-
-    public String toCourse() {
-        return this.course;
-    }
 }

@@ -40,9 +40,9 @@ public class OutputView {
         System.out.println(outputFormatter.formatTotalOrderPrice(totalOrderPrice));
     }
 
-    public void printServiceMenu(final TotalOrderPrice totalOrderPrice) {
-        System.out.println(ProcessMessage.SERVICE_STATISTICS.toMessage());
-        System.out.println(outputFormatter.formatServiceMenu(totalOrderPrice));
+    public void printGiveAwayMenu(final TotalOrderPrice totalOrderPrice) {
+        System.out.println(ProcessMessage.GIVEAWAY_STATISTICS.toMessage());
+        System.out.println(outputFormatter.formatGiveAwayMenu(totalOrderPrice));
     }
 
     public void printBenefits(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {

@@ -9,7 +9,7 @@ public enum ProcessMessage {
     ORDER_TEMPLATE("%s %d개"),
     TOTAL_ORDER_PRICE_STATISTICS("\n<할인 전 총주문 금액>"),
     TOTAL_ORDER_PRICE_TEMPLATE("%,d원"),
-    SERVICE_STATISTICS("\n<증정 메뉴>"),
+    GIVEAWAY_STATISTICS("\n<증정 메뉴>"),
     BENEFITS_STATISTICS("\n<혜택 내역>"),
     TOTAL_DISCOUNT_STATISTICS("<총혜택 금액>"),
     TOTAL_PRICE_STATISTICS("\n<할인 후 예상 결제 금액>"),

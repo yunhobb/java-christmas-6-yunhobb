@@ -34,7 +34,7 @@ public class ChristmasController {
     }
 
     private void readReservationDate() {
-        retryUntilSuccessWithOutReturn(() -> {
+        retryUntilSuccessWithoutReturn(() -> {
             outputView.printReservationDateRequest();
             final ReservationDate reservationDate = inputManager.readReservationDate();
             christmasService.saveReservationDate(reservationDate);
@@ -56,7 +56,7 @@ public class ChristmasController {
         outputView.printOutputStart();
         outputView.printOrderMenu(orderMenu);
         outputView.printTotalOrderPrice(totalOrderPrice);
-        outputView.printServiceMenu(totalOrderPrice);
+        outputView.printGiveAwayMenu(totalOrderPrice);
         outputView.printBenefits(totalDiscount, totalOrderPrice);
         outputView.printTotalDiscount(totalDiscount, totalOrderPrice);
         outputView.printTotalPrice(totalDiscount, totalOrderPrice);
@@ -73,7 +73,7 @@ public class ChristmasController {
         }
     }
 
-    private void retryUntilSuccessWithOutReturn(final MethodParameter parameter) {
+    private void retryUntilSuccessWithoutReturn(final MethodParameter parameter) {
         while (true) {
             try {
                 parameter.run();

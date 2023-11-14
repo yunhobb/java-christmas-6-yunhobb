@@ -54,7 +54,7 @@ public class TotalDiscount {
         return !Objects.equals(this.dayDiscount, NONE_DISCOUNT);
     }
 
-    public Integer toDayDiscount() {
+    public Integer getDayDiscount() {
         return dayDiscount;
     }
 
@@ -72,7 +72,7 @@ public class TotalDiscount {
 
     public Integer getTotalDiscount(final TotalOrderPrice totalOrderPrice) {
         Integer totalDiscount = this.dayDiscount + this.weekendDiscount + this.specialDiscount;
-        if (totalOrderPrice.checkServiceEvent()) {
+        if (totalOrderPrice.checkGiveawayEvent()) {
             totalDiscount += GIVEAWAY_DISCOUNT;
         }
         return totalDiscount;

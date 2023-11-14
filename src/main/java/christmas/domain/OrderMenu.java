@@ -33,57 +33,57 @@ public class OrderMenu {
         final Map<String, Integer> menuWithCount = new HashMap<>();
         for (String element : elements) {
             String[] parts = element.split(MENU_COUNT_DELIMITER);
-            validateMenu(parts[MENU_INDEX]);
-            validateCountNumeric(parts[COUNT_INDEX]);
+            validateNonMenu(parts[MENU_INDEX]);
+            validateMenuCountNumeric(parts[COUNT_INDEX]);
             validateDuplicateMenu(menuWithCount, parts[MENU_INDEX]);
-            validateMenuCount(parts[COUNT_INDEX]);
+            validateMinMenuCount(parts[COUNT_INDEX]);
             menuWithCount.put(parts[MENU_INDEX], Integer.parseInt(parts[COUNT_INDEX]));
         }
-        validateOverTwentyCount(menuWithCount);
-        validateDrinkMenu(menuWithCount);
+        validateMaxMenuCount(menuWithCount);
+        validateOnlyDrinkMenu(menuWithCount);
         return menuWithCount;
     }
 
-    private void validateMenu(final String input) {
+    private void validateNonMenu(final String input) {
         if (ChristmasMenu.isNotIncludeMenu(input)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
         }
     }
 
-    private void validateDrinkMenu(final Map<String, Integer> menuWithCount) {
-        if (ChristmasMenu.isAllDrink(menuWithCount)) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_DRINK_ONLY.toMessage());
+    private void validateMenuCountNumeric(final String input) {
+        if (RegexPattern.isNotNumeric(input)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
         }
     }
 
-    private static void validateDuplicateMenu(final Map<String, Integer> menuWithCount, final String input) {
+    private void validateDuplicateMenu(final Map<String, Integer> menuWithCount, final String input) {
         if (menuWithCount.containsKey(input)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
         }
     }
 
-    private void validateOverTwentyCount(final Map<String, Integer> menuWithCount) {
-        Integer total = menuWithCount.values().stream()
-                .mapToInt(Integer::intValue)
-                .sum();
-        validateMinCount(total);
-    }
-
-    private void validateMinCount(Integer total) {
-        if (total > LIMIT_MENU_COUNT) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MAX_COUNT.toMessage());
-        }
-    }
-
-    private void validateMenuCount(final String input) {
+    private void validateMinMenuCount(final String input) {
         if (Integer.parseInt(input) < MIN_COUNT) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
         }
     }
 
-    private void validateCountNumeric(final String input) {
-        if (RegexPattern.isNotNumeric(input)) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
+    private void validateMaxMenuCount(final Map<String, Integer> menuWithCount) {
+        Integer total = menuWithCount.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+        validateMaxMenuCount(total);
+    }
+
+    private void validateMaxMenuCount(final Integer total) {
+        if (total > LIMIT_MENU_COUNT) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MAX_COUNT.toMessage());
+        }
+    }
+
+    private void validateOnlyDrinkMenu(final Map<String, Integer> menuWithCount) {
+        if (ChristmasMenu.isAllDrink(menuWithCount)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_DRINK_ONLY.toMessage());
         }
     }
 }

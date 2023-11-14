@@ -24,9 +24,9 @@ public class OutputFormatter {
         return String.format(ProcessMessage.TOTAL_ORDER_PRICE_TEMPLATE.toMessage(), totalOrderPrice.toPrice());
     }
 
-    public String formatServiceMenu(final TotalOrderPrice totalOrderPrice) {
-        if (totalOrderPrice.checkServiceEvent()) {
-            return ResultMessage.CHAMPAGNE_SERVICE.toMessage();
+    public String formatGiveAwayMenu(final TotalOrderPrice totalOrderPrice) {
+        if (totalOrderPrice.checkGiveawayEvent()) {
+            return ResultMessage.CHAMPAGNE_GIVEAWAY.toMessage();
         }
         return ResultMessage.DO_NOT_EXIST.toMessage();
     }
@@ -36,7 +36,7 @@ public class OutputFormatter {
         appendDayDiscountMessage(stringbuilder, totalDiscount);
         appendWeekendDiscountMessage(stringbuilder, totalDiscount);
         appendSpecialDiscountMessage(stringbuilder, totalDiscount);
-        appendServiceEventMessage(stringbuilder, totalOrderPrice);
+        appendGiveawayEventMessage(stringbuilder, totalOrderPrice);
         appendNotExistMessage(stringbuilder);
         return stringbuilder.toString();
     }
@@ -44,7 +44,7 @@ public class OutputFormatter {
     private void appendDayDiscountMessage(final StringBuilder stringbuilder, final TotalDiscount totalDiscount) {
         if (totalDiscount.isNotDayDiscount()) {
             stringbuilder.append(String.format(
-                            ResultMessage.CHRISTMAS_D_DAY_DISCOUNT.toMessage(), totalDiscount.toDayDiscount()))
+                            ResultMessage.CHRISTMAS_D_DAY_DISCOUNT.toMessage(), totalDiscount.getDayDiscount()))
                     .append(NEW_LINE);
         }
     }
@@ -62,9 +62,9 @@ public class OutputFormatter {
         }
     }
 
-    private void appendServiceEventMessage(final StringBuilder stringbuilder, final TotalOrderPrice totalOrderPrice) {
-        if (totalOrderPrice.checkServiceEvent()) {
-            stringbuilder.append(ResultMessage.SERVICE_EVENT.toMessage()).append(NEW_LINE);
+    private void appendGiveawayEventMessage(final StringBuilder stringbuilder, final TotalOrderPrice totalOrderPrice) {
+        if (totalOrderPrice.checkGiveawayEvent()) {
+            stringbuilder.append(ResultMessage.GIVEAWAY_EVENT.toMessage()).append(NEW_LINE);
         }
     }
 
