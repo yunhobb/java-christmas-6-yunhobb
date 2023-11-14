@@ -1,6 +1,6 @@
 package christmas.constant;
 
-public enum MenuConstant {
+public enum MenuCategory {
     APPETIZER("appetizer"),
     MAIN("main"),
     DESSERT("dessert"),
@@ -9,7 +9,7 @@ public enum MenuConstant {
 
     private final String course;
 
-    MenuConstant(final String course) {
+    MenuCategory(final String course) {
         this.course = course;
     }
 

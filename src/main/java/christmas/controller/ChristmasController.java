@@ -73,10 +73,10 @@ public class ChristmasController {
         }
     }
 
-    private void retryUntilSuccessWithOutReturn(final Runnable runnable) {
+    private void retryUntilSuccessWithOutReturn(final MethodParameter parameter) {
         while (true) {
             try {
-                runnable.run();
+                parameter.run();
                 return;
             } catch (IllegalArgumentException e) {
                 outputView.printExceptionMessage(e);

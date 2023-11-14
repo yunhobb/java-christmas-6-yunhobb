@@ -23,11 +23,10 @@ public class OrderMenu {
 
     private void validateOrderMenuFormat(final List<String> elements) {
         elements.stream()
-                .filter(RegexPattern::isNotOrderMenuFormat)
+                .filter(RegexPattern::isOrderMenuFormat)
                 .findAny()
-                .ifPresent(element -> {
-                    throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
-                });
+                .orElseThrow(
+                        () -> new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage()));
     }
 
     public Map<String, Integer> getMenuWithCount() {

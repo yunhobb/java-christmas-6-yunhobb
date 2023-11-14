@@ -6,32 +6,32 @@ import java.util.Objects;
 
 public enum ChristmasMenu {
     //Appetizer
-    MUSHROOM_SOUP("양송이수프", 6_000, MenuConstant.APPETIZER),
-    TAPAS("타파스", 5_500, MenuConstant.APPETIZER),
-    CAESAR_SALAD("시저셀러드", 8_000, MenuConstant.APPETIZER),
+    MUSHROOM_SOUP("양송이수프", 6_000, MenuCategory.APPETIZER),
+    TAPAS("타파스", 5_500, MenuCategory.APPETIZER),
+    CAESAR_SALAD("시저셀러드", 8_000, MenuCategory.APPETIZER),
 
     //MainMenu
-    T_BONE_STEAK("티본스테이크", 55_000, MenuConstant.MAIN),
-    BARBECUE_LIP("바비큐립", 54_000, MenuConstant.MAIN),
-    SEA_FOOD_PASTA("해산물파스타", 35_000, MenuConstant.MAIN),
-    CHRISTMAS("크리스마스파스타", 25_000, MenuConstant.MAIN),
+    T_BONE_STEAK("티본스테이크", 55_000, MenuCategory.MAIN),
+    BARBECUE_LIP("바비큐립", 54_000, MenuCategory.MAIN),
+    SEA_FOOD_PASTA("해산물파스타", 35_000, MenuCategory.MAIN),
+    CHRISTMAS("크리스마스파스타", 25_000, MenuCategory.MAIN),
 
     //DessertMenu
-    CHOCOLATE_CAKE("초코케이크", 15_000, MenuConstant.DESSERT),
-    ICE_CREAM("아이스크림", 5_000, MenuConstant.DESSERT),
+    CHOCOLATE_CAKE("초코케이크", 15_000, MenuCategory.DESSERT),
+    ICE_CREAM("아이스크림", 5_000, MenuCategory.DESSERT),
 
     //DrinkMenu
-    ZERO_COKE("제로콜라", 3_000, MenuConstant.DRINK),
-    RED_WINE("레드와인", 60_000, MenuConstant.DRINK),
-    CHAMPAGNE("샴페인", 25_000, MenuConstant.DRINK),
+    ZERO_COKE("제로콜라", 3_000, MenuCategory.DRINK),
+    RED_WINE("레드와인", 60_000, MenuCategory.DRINK),
+    CHAMPAGNE("샴페인", 25_000, MenuCategory.DRINK),
 
-    NONE("none", 0, MenuConstant.NONE);
+    NONE("none", 0, MenuCategory.NONE);
 
     private final String menuName;
     private final Integer price;
-    private final MenuConstant course;
+    private final MenuCategory course;
 
-    ChristmasMenu(final String menuName, final Integer price, final MenuConstant course) {
+    ChristmasMenu(final String menuName, final Integer price, final MenuCategory course) {
         this.menuName = menuName;
         this.price = price;
         this.course = course;
@@ -43,16 +43,16 @@ public enum ChristmasMenu {
     }
 
     public static boolean isDessert(final String menuName) {
-        return findByMenuName(menuName).getCourse() == MenuConstant.DESSERT;
+        return findByMenuName(menuName).getCourse() == MenuCategory.DESSERT;
     }
 
     public static boolean isMain(final String menuName) {
-        return findByMenuName(menuName).getCourse() == MenuConstant.MAIN;
+        return findByMenuName(menuName).getCourse() == MenuCategory.MAIN;
     }
 
     public static boolean isAllDrink(final Map<String, Integer> menuWithCount) {
         return menuWithCount.keySet().stream()
-                .allMatch(key -> findByMenuName(key).getCourse() == MenuConstant.DRINK);
+                .allMatch(key -> findByMenuName(key).getCourse() == MenuCategory.DRINK);
     }
 
     private static ChristmasMenu findByMenuName(final String menuName) {
@@ -70,7 +70,7 @@ public enum ChristmasMenu {
         return price;
     }
 
-    private MenuConstant getCourse() {
+    public MenuCategory getCourse() {
         return course;
     }
 

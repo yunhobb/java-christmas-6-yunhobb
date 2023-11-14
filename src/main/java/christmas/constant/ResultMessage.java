@@ -1,6 +1,6 @@
 package christmas.constant;
 
-public enum OutputMessage {
+public enum ResultMessage {
     CHAMPAGNE_SERVICE("샴페인 1개"),
     CHRISTMAS_D_DAY_DISCOUNT("크리스마스 디데이 할인: -%,d원"),
     WEEKDAY_DISCOUNT("평일 할인: -%,d원"),
@@ -13,7 +13,7 @@ public enum OutputMessage {
 
     private final String message;
 
-    OutputMessage(final String message) {
+    ResultMessage(final String message) {
         this.message = message;
     }
 

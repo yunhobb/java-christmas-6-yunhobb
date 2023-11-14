@@ -16,7 +16,6 @@ public enum ProcessMessage {
     BADGE_STATISTICS("\n<12월 이벤트 배지>");
 
 
-
     private final String message;
 
     ProcessMessage(final String message) {

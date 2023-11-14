@@ -1,10 +1,9 @@
 package christmas.domain;
 
 import christmas.constant.ChristmasMenu;
+import christmas.constant.MenuCategory;
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
 
 public class OrderManager {
 
@@ -27,16 +26,20 @@ public class OrderManager {
     }
 
     public Integer getDiscountMenuCount(final ReservationDate reservationDate) {
-        Predicate<ChristmasMenu> filter = menu -> reservationDate.isHoliday() ?
-                ChristmasMenu.isMain(menu.getMenuName()) :
-                ChristmasMenu.isDessert(menu.getMenuName());
-        return getFilteredMenuCount(filter);
+        MenuCategory filterConstant = MenuCategory.NONE;
+        if (reservationDate.isHoliday()) {
+            filterConstant = MenuCategory.MAIN;
+        }
+        if (!reservationDate.isHoliday()) {
+            filterConstant = MenuCategory.DESSERT;
+        }
+        return getFilteredMenuCount(filterConstant);
     }
 
-    private Integer getFilteredMenuCount(Predicate<ChristmasMenu> filter) {
+    private Integer getFilteredMenuCount(final MenuCategory menuCategory) {
         return elements.entrySet().stream()
-                .filter(entry -> filter.test(entry.getKey()))
-                .mapToInt(Entry::getValue)
-                .sum();
+                .filter(entry -> entry.getKey().getCourse() == menuCategory)
+                .map(Map.Entry::getValue)
+                .reduce(0, Integer::sum);
     }
 }

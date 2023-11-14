@@ -11,7 +11,7 @@ public class TotalDiscount {
     private static final int NONE_DISCOUNT = 0;
     private static final int WEEKEND_DISCOUNT = 2_023;
     private static final int SPECIAL_DISCOUNT = 1_000;
-    private static final int SERVICES_DISCOUNT = 25_000;
+    private static final int GIVEAWAY_DISCOUNT = 25_000;
     private static final int MIN_ACCEPTABLE_DISCOUNT_AMOUNT = 10_000;
     private final Integer dayDiscount;
     private final Integer weekendDiscount;
@@ -73,7 +73,7 @@ public class TotalDiscount {
     public Integer getTotalDiscount(final TotalOrderPrice totalOrderPrice) {
         Integer totalDiscount = this.dayDiscount + this.weekendDiscount + this.specialDiscount;
         if (totalOrderPrice.checkServiceEvent()) {
-            totalDiscount += SERVICES_DISCOUNT;
+            totalDiscount += GIVEAWAY_DISCOUNT;
         }
         return totalDiscount;
     }

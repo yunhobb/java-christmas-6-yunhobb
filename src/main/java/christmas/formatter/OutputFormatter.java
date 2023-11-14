@@ -1,7 +1,7 @@
 package christmas.formatter;
 
 import christmas.constant.Badge;
-import christmas.constant.OutputMessage;
+import christmas.constant.ResultMessage;
 import christmas.constant.ProcessMessage;
 import christmas.domain.OrderMenu;
 import christmas.domain.TotalDiscount;
@@ -26,9 +26,9 @@ public class OutputFormatter {
 
     public String formatServiceMenu(final TotalOrderPrice totalOrderPrice) {
         if (totalOrderPrice.checkServiceEvent()) {
-            return OutputMessage.CHAMPAGNE_SERVICE.toMessage();
+            return ResultMessage.CHAMPAGNE_SERVICE.toMessage();
         }
-        return OutputMessage.DO_NOT_EXIST.toMessage();
+        return ResultMessage.DO_NOT_EXIST.toMessage();
     }
 
     public String formatBenefits(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
@@ -44,7 +44,7 @@ public class OutputFormatter {
     private void appendDayDiscountMessage(final StringBuilder stringbuilder, final TotalDiscount totalDiscount) {
         if (totalDiscount.isNotDayDiscount()) {
             stringbuilder.append(String.format(
-                            OutputMessage.CHRISTMAS_D_DAY_DISCOUNT.toMessage(), totalDiscount.toDayDiscount()))
+                            ResultMessage.CHRISTMAS_D_DAY_DISCOUNT.toMessage(), totalDiscount.toDayDiscount()))
                     .append(NEW_LINE);
         }
     }
@@ -52,38 +52,38 @@ public class OutputFormatter {
     private void appendWeekendDiscountMessage(final StringBuilder stringbuilder, final TotalDiscount totalDiscount) {
         if (totalDiscount.isNotWeekendDiscount()) {
             stringbuilder.append(String.format(
-                    OutputMessage.WEEKDAY_DISCOUNT.toMessage(), totalDiscount.toWeekendDiscount())).append(NEW_LINE);
+                    ResultMessage.WEEKDAY_DISCOUNT.toMessage(), totalDiscount.toWeekendDiscount())).append(NEW_LINE);
         }
     }
 
     private void appendSpecialDiscountMessage(final StringBuilder stringbuilder, final TotalDiscount totalDiscount) {
         if (totalDiscount.isNotSpecialDiscount()) {
-            stringbuilder.append(OutputMessage.SPECIAL_DISCOUNT.toMessage()).append(NEW_LINE);
+            stringbuilder.append(ResultMessage.SPECIAL_DISCOUNT.toMessage()).append(NEW_LINE);
         }
     }
 
     private void appendServiceEventMessage(final StringBuilder stringbuilder, final TotalOrderPrice totalOrderPrice) {
         if (totalOrderPrice.checkServiceEvent()) {
-            stringbuilder.append(OutputMessage.SERVICE_EVENT.toMessage()).append(NEW_LINE);
+            stringbuilder.append(ResultMessage.SERVICE_EVENT.toMessage()).append(NEW_LINE);
         }
     }
 
     private void appendNotExistMessage(final StringBuilder stringbuilder) {
         if (stringbuilder.length() == NO_DISCOUNT) {
-            stringbuilder.append(OutputMessage.DO_NOT_EXIST.toMessage()).append(NEW_LINE);
+            stringbuilder.append(ResultMessage.DO_NOT_EXIST.toMessage()).append(NEW_LINE);
         }
     }
 
     public String formatTotalDiscount(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
         Integer totalDiscountPrice = totalDiscount.getTotalDiscount(totalOrderPrice);
         if (totalDiscountPrice == NO_DISCOUNT) {
-            return OutputMessage.NO_DISCOUNT.toMessage();
+            return ResultMessage.NO_DISCOUNT.toMessage();
         }
-        return String.format(OutputMessage.TOTAL_DISCOUNT_TEMPLATE.toMessage(), totalDiscountPrice);
+        return String.format(ResultMessage.TOTAL_DISCOUNT_TEMPLATE.toMessage(), totalDiscountPrice);
     }
 
     public String formatTotalPrice(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
-        return String.format(OutputMessage.TOTAL_PRICE_TEMPLATE.toMessage(),
+        return String.format(ResultMessage.TOTAL_PRICE_TEMPLATE.toMessage(),
                 totalOrderPrice.getTotalPrice(totalDiscount));
     }
 
