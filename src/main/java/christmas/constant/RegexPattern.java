@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public enum RegexPattern {
     NUMERIC_PATTERN(Pattern.compile("\\d+")),
-    ORDER_MENU_PATTERN(Pattern.compile("^[a-zA-Z]+-\\d+$"));
+    ORDER_MENU_PATTERN(Pattern.compile("([가-힣a-zA-Z]+)-([1-9]\\d*)"));
 
     private final Pattern pattern;
 
@@ -17,7 +17,7 @@ public enum RegexPattern {
         return !pattern.matcher(input).matches();
     }
 
-    public static boolean isOrderMenuFormat(final String input) {
+    public static boolean isNotOrderMenuFormat(final String input) {
         Pattern pattern = ORDER_MENU_PATTERN.pattern;
         return !pattern.matcher(input).matches();
     }
