@@ -33,17 +33,6 @@ public class ChristmasController {
         printEventBenefits(orderMenu, totalOrderPrice, totalDiscount);
     }
 
-    private OrderMenu readOrderMenu() {
-        return retryUntilSuccessWithReturn(() -> {
-            outputView.printMenuWithCountRequest();
-            final OrderMenu orderMenu = inputManager.readOrderMenu();
-            outputView.printOutputStart();
-            christmasService.saveOrderMenu(orderMenu);
-            christmasService.managing();
-            return orderMenu;
-        });
-    }
-
     private void readReservationDate() {
         retryUntilSuccessWithOutReturn(() -> {
             outputView.printReservationDateRequest();
@@ -52,8 +41,19 @@ public class ChristmasController {
         });
     }
 
+    private OrderMenu readOrderMenu() {
+        return retryUntilSuccessWithReturn(() -> {
+            outputView.printMenuWithCountRequest();
+            final OrderMenu orderMenu = inputManager.readOrderMenu();
+            christmasService.saveOrderMenu(orderMenu);
+            christmasService.managing();
+            return orderMenu;
+        });
+    }
+
     private void printEventBenefits(
             final OrderMenu orderMenu, final TotalOrderPrice totalOrderPrice, final TotalDiscount totalDiscount) {
+        outputView.printOutputStart();
         outputView.printOrderMenu(orderMenu);
         outputView.printTotalOrderPrice(totalOrderPrice);
         outputView.printServiceMenu(totalOrderPrice);

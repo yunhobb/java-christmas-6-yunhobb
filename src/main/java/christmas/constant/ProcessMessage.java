@@ -7,7 +7,7 @@ public enum ProcessMessage {
     OUTPUT_STATISTICS("12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
     ORDER_STATISTICS("\n<주문 메뉴>"),
     ORDER_TEMPLATE("%s %d개"),
-    TOTAL_ORDER_PRICE_STATISTICS("<할인 전 총주문 금액>"),
+    TOTAL_ORDER_PRICE_STATISTICS("\n<할인 전 총주문 금액>"),
     TOTAL_ORDER_PRICE_TEMPLATE("%,d원"),
     SERVICE_STATISTICS("\n<증정 메뉴>"),
     BENEFITS_STATISTICS("\n<혜택 내역>"),

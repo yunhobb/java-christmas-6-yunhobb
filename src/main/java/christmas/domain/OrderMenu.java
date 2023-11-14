@@ -46,7 +46,7 @@ public class OrderMenu {
 
     private void validateMenu(final String input) {
         if (ChristmasMenu.isNotIncludeMenu(input)) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU.toMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
         }
     }
 
@@ -58,7 +58,7 @@ public class OrderMenu {
 
     private static void validateDuplicateMenu(final Map<String, Integer> menuWithCount, final String input) {
         if (menuWithCount.containsKey(input)) {
-            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_MENU_ORDER.toMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
         }
     }
 
@@ -77,7 +77,7 @@ public class OrderMenu {
 
     private void validateMenuCount(final String input) {
         if (Integer.parseInt(input) < MIN_COUNT) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MIN_COUNT.toMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage());
         }
     }
 

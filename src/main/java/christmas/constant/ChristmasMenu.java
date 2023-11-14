@@ -42,14 +42,6 @@ public enum ChristmasMenu {
                 .noneMatch(christmasMenu -> christmasMenu.menuName.equals(menuName));
     }
 
-    public static boolean isDessert(final String menuName) {
-        return findByMenuName(menuName).getCourse() == MenuCategory.DESSERT;
-    }
-
-    public static boolean isMain(final String menuName) {
-        return findByMenuName(menuName).getCourse() == MenuCategory.MAIN;
-    }
-
     public static boolean isAllDrink(final Map<String, Integer> menuWithCount) {
         return menuWithCount.keySet().stream()
                 .allMatch(key -> findByMenuName(key).getCourse() == MenuCategory.DRINK);
