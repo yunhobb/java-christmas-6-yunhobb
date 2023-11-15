@@ -12,7 +12,6 @@ class InputValidatorTest {
 
     final InputValidator inputValidator = new InputValidator();
 
-
     @DisplayName("숫자가 아니면 예외를 던지는")
     @Test
     void check_with_number() {

@@ -89,7 +89,7 @@ class TotalDiscountTest {
         @Test
         void is_weekend_discount() {
             //given
-            final ReservationDate reservationDate = new ReservationDate(7);
+            final ReservationDate reservationDate = new ReservationDate(3);
             final List<String> elements = List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1");
             final OrderMenu orderMenu = new OrderMenu(elements);
             final OrderManager orderManager = new OrderManager(orderMenu);
@@ -103,8 +103,8 @@ class TotalDiscountTest {
         @Test
         void is_not_weekend_discount() {
             //given
-            final ReservationDate reservationDate = new ReservationDate(5);
-            final List<String> elements = List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1");
+            final ReservationDate reservationDate = new ReservationDate(27);
+            final List<String> elements = List.of("티본스테이크-1", "바비큐립-1");
             final OrderMenu orderMenu = new OrderMenu(elements);
             final OrderManager orderManager = new OrderManager(orderMenu);
             final TotalDiscount totalDiscount = new TotalDiscount(reservationDate, orderManager);

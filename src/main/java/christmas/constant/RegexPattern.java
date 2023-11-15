@@ -17,8 +17,8 @@ public enum RegexPattern {
         return !pattern.matcher(input).matches();
     }
 
-    public static boolean isNotOrderMenuFormat(final String input) {
+    public static boolean isOrderMenuFormat(final String input) {
         Pattern pattern = ORDER_MENU_PATTERN.pattern;
-        return !pattern.matcher(input).matches();
+        return pattern.matcher(input).matches();
     }
 }

@@ -35,20 +35,20 @@ class RegexPatternTest {
     @Nested
     class OrderFormat {
 
-        @DisplayName("일치하면 false를 반환하는가")
+        @DisplayName("일치하면 true를 반환하는가")
         @ParameterizedTest
         @ValueSource(strings = {"티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"})
         void check_with_number(String input) {
             //given & when & then
-            assertThat(RegexPattern.isNotOrderMenuFormat(input)).isFalse();
+            assertThat(RegexPattern.isOrderMenuFormat(input)).isTrue();
         }
 
-        @DisplayName("일치하지 않으면 true를 반환하는가")
+        @DisplayName("일치하지 않으면 false를 반환하는가")
         @ParameterizedTest
         @ValueSource(strings = {"티본스테이크/1", "티본스테이크//1", "티본스테이크--1"})
         void check_without_number(String input) {
             //given & when & then
-            assertThat(RegexPattern.isNotOrderMenuFormat(input)).isTrue();
+            assertThat(RegexPattern.isOrderMenuFormat(input)).isFalse();
         }
     }
 }

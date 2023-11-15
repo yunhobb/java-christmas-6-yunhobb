@@ -11,6 +11,20 @@ import org.junit.jupiter.api.Test;
 @DisplayName("ReservationDate의")
 class ReservationDateTest {
 
+    @DisplayName("추가일수가 반환되는가ㅂ")
+    @Test
+    void calculate_add_day() {
+        //given
+        final ReservationDate reservationDate = new ReservationDate(8);
+        final Integer expectedAddDay = 8 - 1;
+
+        //when
+        final Integer actualAddDay = reservationDate.calculateAddDay();
+
+        //then
+        assertThat(actualAddDay).isEqualTo(expectedAddDay);
+    }
+
     @DisplayName("날짜 검증시")
     @Nested
     class validate {
@@ -36,20 +50,6 @@ class ReservationDateTest {
             assertThatNoException()
                     .isThrownBy(() -> new ReservationDate(date));
         }
-    }
-
-    @DisplayName("추가일수가 반환되는가")
-    @Test
-    void calculate_add_day() {
-        //given
-        final ReservationDate reservationDate = new ReservationDate(8);
-        final Integer expectedAddDay = 8 - 1;
-
-        //when
-        final Integer actualAddDay = reservationDate.calculateAddDay();
-
-        //then
-        assertThat(actualAddDay).isEqualTo(expectedAddDay);
     }
 
     @DisplayName("요일 검증시")

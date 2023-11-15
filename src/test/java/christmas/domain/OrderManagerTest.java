@@ -9,14 +9,13 @@ import org.junit.jupiter.api.Test;
 @DisplayName("OrderManager의")
 class OrderManagerTest {
 
+    final OrderMenu orderMenu = new OrderMenu(List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
+    final OrderManager orderManager = new OrderManager(orderMenu);
+
     @DisplayName("총 주문 금액을 가져오는가")
     @Test
     void get_total_order_price() {
         //given
-        List<String> elements = List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
-        final OrderManager orderManager = new OrderManager(orderMenu);
-
         final TotalOrderPrice expectedTotalOrderPrice = new TotalOrderPrice(142_000);
 
         //when
@@ -30,10 +29,6 @@ class OrderManagerTest {
     @Test
     void get_discount_menu_count() {
         //given
-        List<String> elements = List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
-        final OrderManager orderManager = new OrderManager(orderMenu);
-
         final ReservationDate reservationDate = new ReservationDate(1);
 
         //when

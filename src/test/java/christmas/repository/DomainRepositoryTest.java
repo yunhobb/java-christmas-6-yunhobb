@@ -33,8 +33,7 @@ class DomainRepositoryTest {
     @Test
     void save_and_get_order_menu() {
         //given
-        final OrderMenu expected = new OrderMenu(
-                                            List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
+        final OrderMenu expected = new OrderMenu(List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
 
         //when
         domainRepository.saveOrderMenu(expected);
@@ -48,9 +47,7 @@ class DomainRepositoryTest {
     @Test
     void save_and_get_order_manager() {
         //given
-        List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(
-                                        List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
+        final OrderMenu orderMenu = new OrderMenu(List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
         final OrderManager expected = new OrderManager(orderMenu);
 
         //when

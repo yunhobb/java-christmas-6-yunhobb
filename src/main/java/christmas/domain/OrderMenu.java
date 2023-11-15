@@ -23,7 +23,7 @@ public class OrderMenu {
 
     private void validateOrderMenuFormat(final List<String> elements) {
         elements.stream()
-                .filter(RegexPattern::isNotOrderMenuFormat)
+                .filter(RegexPattern::isOrderMenuFormat)
                 .findAny()
                 .orElseThrow(
                         () -> new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MENU_FORMAT.toMessage()));

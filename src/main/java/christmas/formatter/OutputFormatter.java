@@ -75,7 +75,7 @@ public class OutputFormatter {
     }
 
     public String formatTotalDiscount(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
-        Integer totalDiscountPrice = totalDiscount.getTotalDiscount(totalOrderPrice);
+        Integer totalDiscountPrice = totalDiscount.getTotalDiscountWithTotalPrice(totalOrderPrice);
         if (totalDiscountPrice == NO_DISCOUNT) {
             return ResultMessage.NO_DISCOUNT.toMessage();
         }
@@ -88,6 +88,6 @@ public class OutputFormatter {
     }
 
     public String formatBadge(final TotalDiscount totalDiscount, final TotalOrderPrice totalOrderPrice) {
-        return Badge.getBadge(totalDiscount.getTotalDiscount(totalOrderPrice)).toName();
+        return Badge.getBadge(totalDiscount.getTotalDiscountWithTotalPrice(totalOrderPrice)).toName();
     }
 }

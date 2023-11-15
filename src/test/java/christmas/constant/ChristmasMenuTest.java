@@ -40,8 +40,8 @@ class ChristmasMenuTest {
             void include_drink() {
                 //given
                 Map<String, Integer> menuWithCount = Map.of("제로콜라", 1,
-                                                            "레드와인", 1,
-                                                            "스테이크", 1);
+                        "레드와인", 1,
+                        "스테이크", 1);
 
                 // when & then
                 assertThat(ChristmasMenu.isAllDrink(menuWithCount)).isTrue();
@@ -52,8 +52,8 @@ class ChristmasMenuTest {
             void not_include_drink() {
                 //given
                 Map<String, Integer> menuWithCount = Map.of("아이스크림", 1,
-                                                            "초코케이크", 1,
-                                                            "스테이크", 1);
+                        "초코케이크", 1,
+                        "스테이크", 1);
 
                 // & when & then
                 assertThat(ChristmasMenu.isAllDrink(menuWithCount)).isFalse();

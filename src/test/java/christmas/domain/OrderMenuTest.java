@@ -14,8 +14,7 @@ class OrderMenuTest {
     @Test
     void validate_non_menu() {
         //given
-        final List<String> elements = List.of("김치찌개-1", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
+        final OrderMenu orderMenu = new OrderMenu(List.of("김치찌개-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
 
         //when & then
         assertThatThrownBy(orderMenu::getMenuWithCount)
@@ -26,8 +25,7 @@ class OrderMenuTest {
     @Test
     void validate_menu_count_numeric() {
         //given
-        final List<String> elements = List.of("티본스테이크-a", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
+        final OrderMenu orderMenu = new OrderMenu(List.of("티본스테이크-a", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
 
         //when & then
         assertThatThrownBy(orderMenu::getMenuWithCount)
@@ -38,8 +36,7 @@ class OrderMenuTest {
     @Test
     void validate_duplicate_name() {
         //given
-        final List<String> elements = List.of("티본스테이크-1", "티본스테이크-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
+        final OrderMenu orderMenu = new OrderMenu(List.of("티본스테이크-1", "티본스테이크-1", "초코케이크-2", "제로콜라-1"));
 
         //when & then
         assertThatThrownBy(orderMenu::getMenuWithCount)
@@ -50,8 +47,7 @@ class OrderMenuTest {
     @Test
     void validate_min_menu_count() {
         //given
-        final List<String> elements = List.of("티본스테이크-0", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
+        final OrderMenu orderMenu = new OrderMenu(List.of("티본스테이크-0", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
 
         //when & then
         assertThatThrownBy(orderMenu::getMenuWithCount)
@@ -62,8 +58,7 @@ class OrderMenuTest {
     @Test
     void validate_max_meun_count() {
         //given
-        final List<String> elements = List.of("티본스테이크-21", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
+        final OrderMenu orderMenu = new OrderMenu(List.of("티본스테이크-21", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
 
         //when & then
         assertThatThrownBy(orderMenu::getMenuWithCount)
@@ -74,8 +69,7 @@ class OrderMenuTest {
     @Test
     void validate_only_drink_menu() {
         //given
-        final List<String> elements = List.of("제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
+        final OrderMenu orderMenu = new OrderMenu(List.of("제로콜라-1"));
 
         //when & then
         assertThatThrownBy(orderMenu::getMenuWithCount)
@@ -86,8 +80,7 @@ class OrderMenuTest {
     @Test
     void normal_output() {
         //given
-        final List<String> elements = List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1");
-        final OrderMenu orderMenu = new OrderMenu(elements);
+        final OrderMenu orderMenu = new OrderMenu(List.of("티본스테이크-1", "바비큐립-1", "초코케이크-2", "제로콜라-1"));
 
         //when & then
         assertThatNoException()
