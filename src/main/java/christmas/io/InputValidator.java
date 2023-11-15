@@ -1,6 +1,6 @@
 package christmas.io;
 
-import christmas.constant.ExceptionMessage;
+import christmas.constant.message.ExceptionMessage;
 import christmas.constant.RegexPattern;
 
 public class InputValidator {

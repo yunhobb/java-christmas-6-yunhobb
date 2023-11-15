@@ -1,6 +1,6 @@
 package christmas.io;
 
-import christmas.constant.ProcessMessage;
+import christmas.constant.message.ProcessMessage;
 import christmas.domain.OrderMenu;
 import christmas.domain.TotalDiscount;
 import christmas.domain.TotalOrderPrice;

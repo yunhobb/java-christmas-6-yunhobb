@@ -1,8 +1,8 @@
 package christmas.formatter;
 
 import christmas.constant.Badge;
-import christmas.constant.ResultMessage;
-import christmas.constant.ProcessMessage;
+import christmas.constant.message.ResultMessage;
+import christmas.constant.message.ProcessMessage;
 import christmas.domain.OrderMenu;
 import christmas.domain.TotalDiscount;
 import christmas.domain.TotalOrderPrice;

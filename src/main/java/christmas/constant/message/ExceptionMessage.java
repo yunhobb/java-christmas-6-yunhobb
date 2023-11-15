@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.message;
 
 public enum ExceptionMessage {
     NOT_INITIALIZED("도메인 객체가 초기화되지 않았습니다."),

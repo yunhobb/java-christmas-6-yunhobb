@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.constant.ExceptionMessage;
+import christmas.constant.message.ExceptionMessage;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;

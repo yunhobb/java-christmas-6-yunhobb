@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.message;
 
 public enum ResultMessage {
     CHAMPAGNE_GIVEAWAY("샴페인 1개"),

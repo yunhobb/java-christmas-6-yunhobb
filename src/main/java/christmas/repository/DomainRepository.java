@@ -1,6 +1,6 @@
 package christmas.repository;
 
-import christmas.constant.ExceptionMessage;
+import christmas.constant.message.ExceptionMessage;
 import christmas.domain.OrderManager;
 import christmas.domain.OrderMenu;
 import christmas.domain.ReservationDate;

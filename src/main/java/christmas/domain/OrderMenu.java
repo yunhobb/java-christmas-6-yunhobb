@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import christmas.constant.ChristmasMenu;
-import christmas.constant.ExceptionMessage;
+import christmas.constant.message.ExceptionMessage;
 import christmas.constant.RegexPattern;
 import java.util.HashMap;
 import java.util.List;
